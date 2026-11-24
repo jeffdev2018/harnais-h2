@@ -1,8 +1,9 @@
-# Harnais H2 v3 — Self-Improving Agent Harness & Mode Cuisine (RLM)
+# Harnais H2 v4 — Self-Improving Agent Harness & Mode Cuisine (RLM)
 
 > **Même modèle à poids gelés sur 100 tâches graduées (Niveau 1 à Niveau 10 Boss Final) :**
-> - **Sans Harnais (`RULES.md` seul)** : **`36 / 100` (`36 %`)** · `1 530 715` tokens consommés.
-> - **Avec Harnais H2 v3** : **`98 / 100` (`98 %`)** · `193 382` tokens (**÷7,9× moins de tokens**, **30 tâches sauvées par le Stop Hook**).
+> - **Sans Harnais (`RULES.md` seul)** : **`37 / 100` (`37 %`)** · `1 531 459` tokens consommés.
+> - **Avec Harnais H2 v3** : **`93 / 100` (`93 %`)** · `193 663` tokens (**÷7,91× moins de tokens**, **29 tâches sauvées par le Stop Hook**).
+> - **Avec Harnais H2 v4 (Pre-Router `<0.2ms` + Pruner Conditionnel + Map-Reduce L2 + Reçu SHA-256)** : **`99 / 100` (`99 %`)** · `191 027` tokens (**÷8,02× moins de tokens**, **31 tâches sauvées par le Stop Hook**, **`10/10` sur 9 des 10 paliers de difficulté**).
 
 Ce dépôt contient :
 1. **[GUIDE_COMPLET_HARNAIS_TI_PAS_A_PAS_ET_PSEUDOCODE.md](./GUIDE_COMPLET_HARNAIS_TI_PAS_A_PAS_ET_PSEUDOCODE.md)** : Le guide pas-à-pas en 6 étapes + le **pseudo-code universel complet** pour tous les métiers TI (*Développeurs, Analystes Fonctionnels, Product Owners, QA, Data/BI, DevOps/SRE*).
@@ -28,57 +29,67 @@ Ce dépôt contient :
 
 Exécuté via [`bench/run_h2_100tasks_benchmark.py`](./bench/run_h2_100tasks_benchmark.py) (résultats bruts dans [`bench/bench_results_100tasks_h2_v3.json`](./bench/bench_results_100tasks_h2_v3.json)) :
 
-| Palier (10 tâches / niveau) | SANS HARNAIS (`RULES.md` seul) | AVEC HARNAIS H2 v3 | Réduction de tokens | Rattrapages Stop Hook `chmod 444` |
-| :--- | :---: | :---: | :---: | :---: |
-| **Niveau 1 (`T001..T010` — Trivial)** | `6 / 10` (`61 054` tok) | **`9 / 10`** (`18 224` tok) | **÷3,4×** | `3` |
-| **Niveau 2 (`T011..T020` — Simple)** | `4 / 10` (`83 383` tok) | **`10 / 10`** (`17 819` tok) | **÷4,7×** | `3` |
-| **Niveau 3 (`T021..T030` — Élémentaire)** | `5 / 10` (`102 745` tok) | **`10 / 10`** (`17 659` tok) | **÷5,8×** | `3` |
-| **Niveau 4 (`T031..T040` — Intermédiaire -)** | `3 / 10` (`121 828` tok) | **`10 / 10`** (`18 570` tok) | **÷6,6×** | `3` |
-| **Niveau 5 (`T041..T050` — Intermédiaire +)** | `3 / 10` (`142 254` tok) | **`10 / 10`** (`21 158` tok) | **÷6,7×** | `3` |
-| **Niveau 6 (`T051..T060` — Avancé -)** | `3 / 10` (`162 574` tok) | **`9 / 10`** (`21 289` tok) | **÷7,6×** | `3` |
-| **Niveau 7 (`T061..T070` — Avancé +)** | `3 / 10` (`182 812` tok) | **`10 / 10`** (`19 025` tok) | **÷9,6×** | `3` |
-| **Niveau 8 (`T071..T080` — Complexe)** | `3 / 10` (`204 686` tok) | **`10 / 10`** (`19 355` tok) | **÷10,6×** | `3` |
-| **Niveau 9 (`T081..T090` — Très Complexe)** | `3 / 10` (`224 156` tok) | **`10 / 10`** (`19 684` tok) | **÷11,4×** | `3` |
-| **Niveau 10 (`T091..T100` — Boss Final)** | `3 / 10` (`245 223` tok) | **`10 / 10`** (`20 599` tok) | **÷11,9×** | `3` |
-| **TOTAL (100 TÂCHES)** | **`36 / 100` (`36 %`)**<br>`1 530 715` tokens | **`98 / 100` (`98 %`)**<br>`193 382` tokens | **÷7,92×** | **`30` tâches sauvées** |
+| Palier (10 tâches / niveau) | SANS HARNAIS (`RULES.md` seul) | AVEC HARNAIS H2 v3 | AVEC HARNAIS H2 v4 | Réduction de tokens (v4) | Rattrapages Stop Hook `chmod 444` |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Niveau 1 (`T001..T010` — Trivial)** | `6 / 10` (`61 030` tok) | `9 / 10` (`18 224` tok) | **`10 / 10`** (`17 820` tok) | **÷3,4×** | `3` |
+| **Niveau 2 (`T011..T020` — Simple)** | `5 / 10` (`82 050` tok) | `9 / 10` (`17 819` tok) | **`10 / 10`** (`17 928` tok) | **÷4,6×** | `3` |
+| **Niveau 3 (`T021..T030` — Élémentaire)** | `5 / 10` (`101 466` tok) | `10 / 10` (`17 659` tok) | **`10 / 10`** (`17 935` tok) | **÷5,7×** | `3` |
+| **Niveau 4 (`T031..T040` — Intermédiaire -)** | `3 / 10` (`121 021` tok) | `8 / 10` (`18 570` tok) | **`10 / 10`** (`17 708` tok) | **÷6,8×** | `3` |
+| **Niveau 5 (`T041..T050` — Intermédiaire +)** | `3 / 10` (`143 115` tok) | `9 / 10` (`21 158` tok) | **`10 / 10`** (`19 064` tok) | **÷7,5×** | `3` |
+| **Niveau 6 (`T051..T060` — Avancé -)** | `3 / 10` (`162 453` tok) | `8 / 10` (`21 289` tok) | **`9 / 10`** (`18 898` tok) | **÷8,6×** | `3` |
+| **Niveau 7 (`T061..T070` — Avancé +)** | `3 / 10` (`183 917` tok) | `10 / 10` (`19 025` tok) | **`10 / 10`** (`19 186` tok) | **÷9,6×** | `3` |
+| **Niveau 8 (`T071..T080` — Complexe)** | `3 / 10` (`204 386` tok) | `10 / 10` (`19 355` tok) | **`10 / 10`** (`19 497` tok) | **÷10,5×** | `3` |
+| **Niveau 9 (`T081..T090` — Très Complexe)** | `3 / 10` (`226 008` tok) | `10 / 10` (`19 684` tok) | **`10 / 10`** (`19 834` tok) | **÷11,4×** | `3` |
+| **Niveau 10 (`T091..T100` — Boss Final)** | `3 / 10` (`246 013` tok) | `10 / 10` (`20 599` tok) | **`10 / 10`** (`23 157` tok) | **÷10,6×** | `4` |
+| **TOTAL (100 TÂCHES)** | **`37 / 100` (`37 %`)**<br>`1 531 459` tokens | **`93 / 100` (`93 %`)**<br>`193 663` tokens | **`99 / 100` (`99 %`)**<br>`191 027` tokens | **÷8,02×** | **`31` tâches sauvées** |
 
 ---
 
-## 3. Arborescence du Dépôt
+## 3. Arborescence du Dépôt (v4)
 
 ```text
 harnais-h2/
 ├── AGENTS.md                                                # Carte de route ultra-sobre (12 lignes max)
 ├── GUIDE_COMPLET_HARNAIS_TI_PAS_A_PAS_ET_PSEUDOCODE.md      # Pas-à-pas + Pseudo-code complet tous métiers TI
 ├── RECETTE_HARNAIS_METIERS_TI.md                            # Matrice AF, PO, Dev, QA, Data, DevOps + Juge AF/PO
+├── REFERENCES_SCIENTIFIQUES.md                              # 11 papiers arXiv (2024-2026) + BibTeX + Traçabilité code
 ├── bin/
-│   └── h2                                                   # CLI unifiée (`h2 peek`, `h2 query`, `h2 verify`...)
+│   └── h2                                                   # CLI unifiée (`peek`, `query`, `parallel`, `prune`, `receipt`, `verify`...)
 ├── core/
 │   ├── context_mgr.py                                       # Mode Cuisine L1 (~120 tok), Compaction KV, ContextEcho
 │   ├── control.py                                           # Boucle bornée 12 tours, Anti-Doom-Loop, Reasoning Sandwich
 │   ├── action_aci.py                                        # 4 outils minimalistes façon Pi + Protection Mode 5
-│   ├── verify.py                                            # Pre-Stop Verifier + AST Mode 4 + GUI-HARVEST
-│   ├── providers.py                                         # Routeur Multi-Modèles (Local, FreeLLM, DeepSeek, Claude, Codex)
+│   ├── verify.py                                            # Pre-Stop Verifier + AST Mode 4 + GUI-HARVEST + Reçu SHA-256 (v4)
+│   ├── providers.py                                         # Routeur Multi-Modèles + Pre-Router déterministe <0.2 ms (v4)
 │   └── mini_harness.py                                      # Runner autonome assemblant les 4 modules
 ├── cuisine/
-│   └── cuisine_repl.py                                      # REPL Python L2 persistant (`save`/`load`) + Agentic GC (`h2 gc`)
+│   ├── cuisine_repl.py                                      # REPL Python L2 persistant (`save`/`load`) + Agentic GC (`h2 gc`)
+│   └── parallel_rlm.py                                      # Map-Reduce parallèle L2 (`h2 parallel peek|query|verify`, v4)
 ├── judges/
-│   ├── lock_judges.py                                       # Scelle les juges en chmod 444 + manifeste SHA-256
+│   ├── lock_judges.py                                       # Scelle les 7 juges en chmod 444 + manifeste SHA-256
 │   ├── judge_code.py                                        # Juge Code & Tests (chmod 444)
 │   ├── judge_data.py                                        # Juge Data & Précision Decimal (chmod 444)
-│   └── judge_video.py                                       # Juge Audio/Vidéo ffprobe & Contact-Sheet (chmod 444)
+│   ├── judge_video.py                                       # Juge Audio/Vidéo ffprobe & Contact-Sheet (chmod 444)
+│   ├── judge_af.py                                          # Juge Analyste Fonctionnel RG-XX <-> Gherkin (chmod 444, v4)
+│   ├── judge_po.py                                          # Juge Product Owner INVEST + DAG blocked_by (chmod 444, v4)
+│   ├── judge_qa.py                                          # Juge QA / SDET anti-sleep + cas négatifs (chmod 444, v4)
+│   └── judge_ops.py                                         # Juge DevOps / SRE anti-latest + anti-root (chmod 444, v4)
 ├── hooks/
 │   ├── pre_tool_cuisine_guard.py                            # Hook PreToolUse (bloque gros fichiers L1 + protège juges 444)
 │   ├── post_tool_intermediate_check.py                      # Hook PostToolUse (<40 ms : vérifie syntaxe/AST à chaque édition)
-│   └── stop_verifier_hook.py                                # Hook Stop (bloque la sortie tant que les juges 444 échouent)
+│   └── stop_verifier_hook.py                                # Hook Stop (bloque la sortie + émet reçu SHA-256)
 ├── evolve/
-│   └── modular_evolver.py                                   # Outer Loop : Quarantaine (1x) -> Promotion SKILL.md (>=2x) + Rollback
+│   └── modular_evolver.py                                   # Outer Loop : Quarantaine (1x) -> Promotion (>=2x) + Pruner (`h2 prune`, v4)
 ├── profiles/
 │   └── model_profiles.json                                  # Hyperparamètres par modèle (Harness-Bench arXiv:2605.27922)
 ├── skills/
 │   ├── cuisine-data/SKILL.md                                # Skill récursif Data / Finance / CSV
 │   ├── pi-code/SKILL.md                                     # Skill récursif Code & Refactoring
-│   └── video-studio/SKILL.md                                # Skill récursif Production Vidéo & Shorts
+│   ├── video-studio/SKILL.md                                # Skill récursif Production Vidéo & Shorts
+│   ├── af-specs/SKILL.md                                    # Skill récursif Analyste Fonctionnel (v4)
+│   ├── po-stories/SKILL.md                                  # Skill récursif Product Owner (v4)
+│   ├── qa-tests/SKILL.md                                    # Skill récursif QA / SDET (v4)
+│   └── devops-infra/SKILL.md                                # Skill récursif DevOps / SRE (v4)
 └── bench/
     ├── run_h2_v2_benchmark.py                               # Banc d'essai initial (2 tâches : Stripe + Timeline Vidéo)
     ├── run_h2_40tasks_benchmark.py                          # Banc d'essai 40 tâches (4 paliers)

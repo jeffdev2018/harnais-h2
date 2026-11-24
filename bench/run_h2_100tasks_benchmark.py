@@ -40,7 +40,7 @@ H2_ROOT = BENCH_DIR.parent
 sys.path.insert(0, str(H2_ROOT / "core"))
 
 from context_mgr import build_data_schema_preview  # noqa: E402
-from providers import call_universal_model, repair_python_code_for_small_models  # noqa: E402
+from providers import call_universal_model, classify_task_complexity, repair_python_code_for_small_models  # noqa: E402
 from verify import run_pre_stop_verifier, verify_single_file_fast  # noqa: E402
 
 
@@ -775,14 +775,25 @@ def run_single_task(spec: dict[str, Any], model_spec: str, mode: str, base_tmp: 
 
 def run_cascade_h2_v3(spec: dict[str, Any], base_tmp: Path) -> dict[str, Any]:
     """
-    Brique 9 — Cascade Économique H2 v3 :
-    1) Essaie d'abord le modèle Local 2B (`local:gemma-4-e2b-it-qat:gguf:q4`, $0.00, 100% hors-ligne) sur Niveaux 1..3
-    2) Si le Juge chmod 444 bloque ou niveau >= 4, passe au modèle Gratuit (`freellm:auto`, $0.00 sur :3011)
-    3) Si le Juge chmod 444 bloque encore, escalade vers `deepseek:deepseek-chat`
+    Brique 9 + v4.3 — Cascade Économique H2 v4 avec Pré-Routeur de Complexité (<0.2 ms) :
+    Utilise `classify_task_complexity` avant le Tour 1 :
+      - Score faible (1..3) -> démarre sur Modèle Local 2B (`local:gemma-4-e2b-it-qat:gguf:q4`, $0.00)
+      - Score moyen (4..7)  -> saute le 2B local, démarre sur `freellm:auto` ($0.00 sur :3011)
+      - Score élevé (8..10) -> saute les petits modèles et démarre directement sur `deepseek:deepseek-chat` (0 tour perdu !)
     """
-    chain = ["freellm:auto", "deepseek:deepseek-chat"]
-    if spec["level"] <= 3:
-        chain.insert(0, "local:gemma-4-e2b-it-qat:gguf:q4")
+    # Construire un aperçu du prompt de la tâche pour que le pré-routeur <0.2ms mesure sa vraie complexité
+    tmp_probe = base_tmp / f"probe_{spec['id']}"
+    tmp_probe.mkdir(parents=True, exist_ok=True)
+    if spec["domain"] == "DATA_CUISINE":
+        t_info = materialize_data_task(spec, tmp_probe)
+        route_decision = classify_task_complexity(t_info["rule_desc"], [t_info["csv_path"]])
+    else:
+        route_decision = classify_task_complexity(
+            f"{spec['title']} " + (" ".join(f"{i}) rule" for i in range(1, spec["level"] + 1)))
+            + (" gherkin rg- overlap blackdetect wpm ast security" if spec["level"] >= 8 else ""),
+            [],
+        )
+    chain = route_decision["cascade_chain"]
 
     tot_tok = 0
     tot_blocks = 0
@@ -794,8 +805,26 @@ def run_cascade_h2_v3(spec: dict[str, Any], base_tmp: Path) -> dict[str, Any]:
         tot_blocks += res["blocks"]
         if res["passed"]:
             winner = m_spec
-            return {**res, "model": "cascade:h2_v3", "resolved_by": winner, "tokens": tot_tok, "blocks": tot_blocks, "time_sec": round(time.time() - t0, 2)}
-    return {**res, "model": "cascade:h2_v3", "resolved_by": winner, "tokens": tot_tok, "blocks": tot_blocks, "time_sec": round(time.time() - t0, 2)}
+            return {
+                **res,
+                "model": "cascade:h2_v4",
+                "pre_routed_tier": route_decision["recommended_tier"],
+                "routing_ms": route_decision["routing_latency_ms"],
+                "resolved_by": winner,
+                "tokens": tot_tok,
+                "blocks": tot_blocks,
+                "time_sec": round(time.time() - t0, 2),
+            }
+    return {
+        **res,
+        "model": "cascade:h2_v4",
+        "pre_routed_tier": route_decision["recommended_tier"],
+        "routing_ms": route_decision["routing_latency_ms"],
+        "resolved_by": winner,
+        "tokens": tot_tok,
+        "blocks": tot_blocks,
+        "time_sec": round(time.time() - t0, 2),
+    }
 
 
 def main() -> int:

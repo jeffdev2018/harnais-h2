@@ -2,73 +2,134 @@
   "total_tasks": 100,
   "total_evaluations_part1": 200,
   "global_100_summary": {
-    "sans_harnais_score": "36/100 (36.0%)",
-    "harnais_h2_v3_score": "93/100 (93.0%)",
-    "sans_harnais_tokens": 1530715,
-    "harnais_h2_v3_tokens": 193382,
-    "token_reduction_factor": 7.92,
-    "stop_hook_recoveries": 30
+    "sans_harnais_score": "37/100 (37%)",
+    "harnais_h2_v3_score": "93/100 (93%)",
+    "harnais_h2_v4_score": "99/100 (99%)",
+    "sans_harnais_tokens": 1531459,
+    "harnais_h2_v4_tokens": 191027,
+    "token_reduction_factor": 8.02,
+    "stop_hook_recoveries": 31
   },
   "levels_1_to_10": {
     "1": {
       "range": "T001..T010",
       "desc": "Niveau 1 (Trivial : 1 opération directe, petits fichiers)",
       "sans_harnais": "6/10 (61,054 tok)",
-      "harnais_h2_v3": "8/10 (18,224 tok, ÷3.4x, 3 rattrapages)"
+      "harnais_h2_v3": "8/10 (18,224 tok, ÷3.4x, 3 rattrapages)",
+      "sans_harnais_pass": "6/10",
+      "harnais_h2_v4_pass": "10/10",
+      "sans_harnais_tokens": 61030,
+      "harnais_h2_v4_tokens": 17820,
+      "token_reduction_factor": 3.4,
+      "stop_hook_recoveries": 3
     },
     "2": {
       "range": "T011..T020",
       "desc": "Niveau 2 (Simple : 1 filtre conditionnel simple)",
       "sans_harnais": "4/10 (83,383 tok)",
-      "harnais_h2_v3": "10/10 (17,819 tok, ÷4.7x, 3 rattrapages)"
+      "harnais_h2_v3": "10/10 (17,819 tok, ÷4.7x, 3 rattrapages)",
+      "sans_harnais_pass": "5/10",
+      "harnais_h2_v4_pass": "10/10",
+      "sans_harnais_tokens": 82050,
+      "harnais_h2_v4_tokens": 17928,
+      "token_reduction_factor": 4.6,
+      "stop_hook_recoveries": 3
     },
     "3": {
       "range": "T021..T030",
       "desc": "Niveau 3 (Élémentaire : 2 conditions ou remise fixe)",
       "sans_harnais": "5/10 (102,745 tok)",
-      "harnais_h2_v3": "10/10 (17,659 tok, ÷5.8x, 3 rattrapages)"
+      "harnais_h2_v3": "10/10 (17,659 tok, ÷5.8x, 3 rattrapages)",
+      "sans_harnais_pass": "5/10",
+      "harnais_h2_v4_pass": "10/10",
+      "sans_harnais_tokens": 101466,
+      "harnais_h2_v4_tokens": 17935,
+      "token_reduction_factor": 5.7,
+      "stop_hook_recoveries": 3
     },
     "4": {
       "range": "T031..T040",
       "desc": "Niveau 4 (Intermédiaire - : pourcentages arrondis par ligne)",
       "sans_harnais": "3/10 (121,828 tok)",
-      "harnais_h2_v3": "9/10 (18,570 tok, ÷6.6x, 3 rattrapages)"
+      "harnais_h2_v3": "9/10 (18,570 tok, ÷6.6x, 3 rattrapages)",
+      "sans_harnais_pass": "3/10",
+      "harnais_h2_v4_pass": "10/10",
+      "sans_harnais_tokens": 121021,
+      "harnais_h2_v4_tokens": 17708,
+      "token_reduction_factor": 6.8,
+      "stop_hook_recoveries": 3
     },
     "5": {
       "range": "T041..T050",
       "desc": "Niveau 5 (Intermédiaire + : frais fixes + variables + remboursements)",
       "sans_harnais": "3/10 (142,254 tok)",
-      "harnais_h2_v3": "9/10 (21,158 tok, ÷6.7x, 3 rattrapages)"
+      "harnais_h2_v3": "9/10 (21,158 tok, ÷6.7x, 3 rattrapages)",
+      "sans_harnais_pass": "3/10",
+      "harnais_h2_v4_pass": "10/10",
+      "sans_harnais_tokens": 143115,
+      "harnais_h2_v4_tokens": 19064,
+      "token_reduction_factor": 7.5,
+      "stop_hook_recoveries": 3
     },
     "6": {
       "range": "T051..T060",
       "desc": "Niveau 6 (Avancé - : multi-devises FX + paliers de remise)",
       "sans_harnais": "3/10 (162,574 tok)",
-      "harnais_h2_v3": "7/10 (21,289 tok, ÷7.6x, 3 rattrapages)"
+      "harnais_h2_v3": "7/10 (21,289 tok, ÷7.6x, 3 rattrapages)",
+      "sans_harnais_pass": "3/10",
+      "harnais_h2_v4_pass": "9/10",
+      "sans_harnais_tokens": 162453,
+      "harnais_h2_v4_tokens": 18898,
+      "token_reduction_factor": 8.6,
+      "stop_hook_recoveries": 3
     },
     "7": {
       "range": "T061..T070",
       "desc": "Niveau 7 (Avancé + : déduplication temporelle <15m + alias Gmail)",
       "sans_harnais": "3/10 (182,812 tok)",
-      "harnais_h2_v3": "10/10 (19,025 tok, ÷9.6x, 3 rattrapages)"
+      "harnais_h2_v3": "10/10 (19,025 tok, ÷9.6x, 3 rattrapages)",
+      "sans_harnais_pass": "3/10",
+      "harnais_h2_v4_pass": "10/10",
+      "sans_harnais_tokens": 183917,
+      "harnais_h2_v4_tokens": 19186,
+      "token_reduction_factor": 9.6,
+      "stop_hook_recoveries": 3
     },
     "8": {
       "range": "T071..T080",
       "desc": "Niveau 8 (Complexe : doublons Gmail + FX + pénalités de litige $15)",
       "sans_harnais": "3/10 (204,686 tok)",
-      "harnais_h2_v3": "10/10 (19,355 tok, ÷10.6x, 3 rattrapages)"
+      "harnais_h2_v3": "10/10 (19,355 tok, ÷10.6x, 3 rattrapages)",
+      "sans_harnais_pass": "3/10",
+      "harnais_h2_v4_pass": "10/10",
+      "sans_harnais_tokens": 204386,
+      "harnais_h2_v4_tokens": 19497,
+      "token_reduction_factor": 10.5,
+      "stop_hook_recoveries": 3
     },
     "9": {
       "range": "T081..T090",
       "desc": "Niveau 9 (Très Complexe : 5 règles croisées + commissions affiliés)",
       "sans_harnais": "3/10 (224,156 tok)",
-      "harnais_h2_v3": "10/10 (19,684 tok, ÷11.4x, 3 rattrapages)"
+      "harnais_h2_v3": "10/10 (19,684 tok, ÷11.4x, 3 rattrapages)",
+      "sans_harnais_pass": "3/10",
+      "harnais_h2_v4_pass": "10/10",
+      "sans_harnais_tokens": 226008,
+      "harnais_h2_v4_tokens": 19834,
+      "token_reduction_factor": 11.4,
+      "stop_hook_recoveries": 3
     },
     "10": {
       "range": "T091..T100",
       "desc": "Niveau 10 (Boss Final : réconciliation intégrale 450 lignes / 560 mots + révocation par ref_tx_id)",
       "sans_harnais": "3/10 (245,223 tok)",
-      "harnais_h2_v3": "10/10 (20,599 tok, ÷11.9x, 3 rattrapages)"
+      "harnais_h2_v3": "10/10 (20,599 tok, ÷11.9x, 3 rattrapages)",
+      "sans_harnais_pass": "3/10",
+      "harnais_h2_v4_pass": "10/10",
+      "sans_harnais_tokens": 246013,
+      "harnais_h2_v4_tokens": 23157,
+      "token_reduction_factor": 10.6,
+      "stop_hook_recoveries": 4
     }
   },
   "multimodel_ladder": [
@@ -334,9 +395,9 @@
       ]
     },
     {
-      "category": "CASCADE_H2_v3",
-      "model_spec": "cascade:h2_v3",
-      "label": "Cascade H2 v3 (Local 2B -> FreeLLM $0 -> DeepSeek)",
+      "category": "CASCADE_H2_v4",
+      "model_spec": "cascade:h2_v4",
+      "label": "Cascade H2 v4 (Pre-Router <0.2ms : Local 2B -> FreeLLM $0 -> DeepSeek)",
       "passed_on_ladder": "5/5",
       "ladder_breakdown": [
         "L1:✓",
@@ -345,8 +406,8 @@
         "L8:✓",
         "L10:✓"
       ],
-      "total_tokens": 36636,
-      "stop_hook_blocks": 12,
+      "total_tokens": 21087,
+      "stop_hook_blocks": 6,
       "runs": [
         {
           "id": "T001",
