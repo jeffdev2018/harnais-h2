@@ -7,7 +7,8 @@
 Ce dépôt contient :
 1. **[GUIDE_COMPLET_HARNAIS_TI_PAS_A_PAS_ET_PSEUDOCODE.md](./GUIDE_COMPLET_HARNAIS_TI_PAS_A_PAS_ET_PSEUDOCODE.md)** : Le guide pas-à-pas en 6 étapes + le **pseudo-code universel complet** pour tous les métiers TI (*Développeurs, Analystes Fonctionnels, Product Owners, QA, Data/BI, DevOps/SRE*).
 2. **[RECETTE_HARNAIS_METIERS_TI.md](./RECETTE_HARNAIS_METIERS_TI.md)** : La matrice métier TI et le Juge `chmod 444` de 30 lignes pour vérifier automatiquement les spécifications fonctionnelles (`RG-XX` $\leftrightarrow$ Gherkin `Given/When/Then`) et User Stories.
-3. **L'implémentation Python complète et exécutable (`core/`, `cuisine/`, `judges/`, `hooks/`, `evolve/`, `bench/`)** : prête à brancher sur **Claude Code**, **Antigravity**, **Codex CLI**, **OpenCode**, **DeepSeek** et les **modèles locaux/gratuits**.
+3. **[REFERENCES_SCIENTIFIQUES.md](./REFERENCES_SCIENTIFIQUES.md)** & le dossier **[`references/`](./references/)** : L'ensemble des **11 papiers arXiv (2024–2026)**, études empiriques, textes intégraux (`2611.22299`, `2608.23552`, `why-the-harness-matters.md`), entrées BibTeX et matrice de traçabilité vers chaque fichier Python du harnais.
+4. **L'implémentation Python complète et exécutable (`core/`, `cuisine/`, `judges/`, `hooks/`, `evolve/`, `bench/`)** : prête à brancher sur **Claude Code**, **Antigravity**, **Codex CLI**, **OpenCode**, **DeepSeek** et les **modèles locaux/gratuits**.
 
 ---
 
