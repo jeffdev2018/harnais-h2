@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.DS_Store
+logs/l2_repl_state.json
+logs/verifier_blocks.jsonl
+logs/skill_versions/

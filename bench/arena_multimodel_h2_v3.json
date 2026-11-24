@@ -1,0 +1,281 @@
+{
+  "elapsed_sec": 583.0,
+  "models": [
+    {
+      "category": "LOCAL_M5_METAL",
+      "spec": "local:gemma-4-e2b-it-qat:gguf:q4",
+      "label": "Gemma 4 E2B Q4 (Local Apple M5 Pro)",
+      "sans_harnais_score": "0/2",
+      "harnais_h2_v3_score": "0/2",
+      "sans_harnais_tokens": 39529,
+      "harnais_h2_v3_tokens": 28168,
+      "token_reduction_factor": 1.4,
+      "stop_hook_recoveries": 6,
+      "t1_data": {
+        "sans_harnais": {
+          "passed": false,
+          "tokens": 9939,
+          "time_sec": 8.78,
+          "turns": 1,
+          "blocks": 0,
+          "pred": {
+            "valid_tx_count": 54,
+            "stripe_fees_total_usd": 1487.88,
+            "affiliate_payout_usd": 118.8,
+            "final_net_payout_usd": 1411.32
+          }
+        },
+        "harnais_h2_v3": {
+          "passed": false,
+          "tokens": 17715,
+          "time_sec": 186.94,
+          "turns": 3,
+          "blocks": 3,
+          "pred": {}
+        }
+      },
+      "t2_code": {
+        "sans_harnais": {
+          "passed": false,
+          "tokens": 29590,
+          "time_sec": 41.11,
+          "turns": 1,
+          "blocks": 0
+        },
+        "harnais_h2_v3": {
+          "passed": false,
+          "tokens": 10453,
+          "time_sec": 60.24,
+          "turns": 3,
+          "blocks": 3
+        }
+      }
+    },
+    {
+      "category": "FREELLM_3011",
+      "spec": "freellm:auto",
+      "label": "FreeLLM Auto Router (:3011 $0 -> Nemotron 3 Ultra 550B)",
+      "sans_harnais_score": "0/2 (Timeout >110s sur prompt 28 Ko)",
+      "harnais_h2_v3_score": "2/2",
+      "sans_harnais_tokens": 25367,
+      "harnais_h2_v3_tokens": 7132,
+      "token_reduction_factor": 3.56,
+      "stop_hook_recoveries": 1,
+      "t1_data": {
+        "sans_harnais": {
+          "passed": false,
+          "tokens": 11200,
+          "time_sec": 110.0,
+          "turns": 1,
+          "blocks": 0,
+          "pred": {}
+        },
+        "harnais_h2_v3": {
+          "passed": true,
+          "tokens": 2880,
+          "time_sec": 22.56,
+          "turns": 1,
+          "blocks": 0,
+          "pred": {
+            "valid_tx_count": 145,
+            "stripe_fees_total_usd": 655.71,
+            "affiliate_payout_usd": 963.8,
+            "final_net_payout_usd": 11491.23
+          }
+        }
+      },
+      "t2_code": {
+        "sans_harnais": {
+          "passed": false,
+          "tokens": 14167,
+          "time_sec": 110.0,
+          "turns": 1,
+          "blocks": 0
+        },
+        "harnais_h2_v3": {
+          "passed": true,
+          "tokens": 4252,
+          "time_sec": 12.17,
+          "turns": 2,
+          "blocks": 1
+        }
+      }
+    },
+    {
+      "category": "DEEPSEEK_API",
+      "spec": "deepseek:deepseek-chat",
+      "label": "DeepSeek Chat Direct API",
+      "sans_harnais_score": "0/2",
+      "harnais_h2_v3_score": "2/2",
+      "sans_harnais_tokens": 33648,
+      "harnais_h2_v3_tokens": 6338,
+      "token_reduction_factor": 5.31,
+      "stop_hook_recoveries": 1,
+      "t1_data": {
+        "sans_harnais": {
+          "passed": false,
+          "tokens": 8009,
+          "time_sec": 1.08,
+          "turns": 1,
+          "blocks": 0,
+          "pred": {
+            "valid_tx_count": 148,
+            "stripe_fees_total_usd": 654.83,
+            "affiliate_payout_usd": 421.68,
+            "final_net_payout_usd": 12834.49
+          }
+        },
+        "harnais_h2_v3": {
+          "passed": true,
+          "tokens": 2133,
+          "time_sec": 3.76,
+          "turns": 1,
+          "blocks": 0,
+          "pred": {
+            "valid_tx_count": 145,
+            "stripe_fees_total_usd": "655.71",
+            "affiliate_payout_usd": "963.80",
+            "final_net_payout_usd": "11491.23"
+          }
+        }
+      },
+      "t2_code": {
+        "sans_harnais": {
+          "passed": false,
+          "tokens": 25639,
+          "time_sec": 7.91,
+          "turns": 1,
+          "blocks": 0
+        },
+        "harnais_h2_v3": {
+          "passed": true,
+          "tokens": 4205,
+          "time_sec": 6.14,
+          "turns": 2,
+          "blocks": 1
+        }
+      }
+    },
+    {
+      "category": "CHATGPT_CLI",
+      "spec": "cli:codex",
+      "label": "ChatGPT (via Codex CLI)",
+      "sans_harnais_score": "2/2",
+      "harnais_h2_v3_score": "2/2",
+      "sans_harnais_tokens": 110689,
+      "harnais_h2_v3_tokens": 82129,
+      "token_reduction_factor": 1.35,
+      "stop_hook_recoveries": 0,
+      "t1_data": {
+        "sans_harnais": {
+          "passed": true,
+          "tokens": 47834,
+          "time_sec": 37.58,
+          "turns": 1,
+          "blocks": 0,
+          "pred": {
+            "valid_tx_count": 145,
+            "stripe_fees_total_usd": 655.71,
+            "affiliate_payout_usd": 963.8,
+            "final_net_payout_usd": 11491.23
+          }
+        },
+        "harnais_h2_v3": {
+          "passed": true,
+          "tokens": 41258,
+          "time_sec": 24.76,
+          "turns": 1,
+          "blocks": 0,
+          "pred": {
+            "valid_tx_count": 145,
+            "stripe_fees_total_usd": 655.71,
+            "affiliate_payout_usd": 963.8,
+            "final_net_payout_usd": 11491.23
+          }
+        }
+      },
+      "t2_code": {
+        "sans_harnais": {
+          "passed": true,
+          "tokens": 62855,
+          "time_sec": 25.21,
+          "turns": 1,
+          "blocks": 0
+        },
+        "harnais_h2_v3": {
+          "passed": true,
+          "tokens": 40871,
+          "time_sec": 26.45,
+          "turns": 1,
+          "blocks": 0
+        }
+      }
+    },
+    {
+      "category": "CLAUDE_CLI",
+      "spec": "cli:claude",
+      "label": "Claude (via Claude Code CLI)",
+      "sans_harnais_score": "1/2",
+      "harnais_h2_v3_score": "2/2",
+      "sans_harnais_tokens": 8957,
+      "harnais_h2_v3_tokens": 4409,
+      "token_reduction_factor": 2.03,
+      "stop_hook_recoveries": 0,
+      "t1_data": {
+        "sans_harnais": {
+          "passed": true,
+          "tokens": 5493,
+          "time_sec": 104.12,
+          "turns": 1,
+          "blocks": 0,
+          "pred": {
+            "valid_tx_count": 145,
+            "stripe_fees_total_usd": 655.71,
+            "affiliate_payout_usd": 963.8,
+            "final_net_payout_usd": 11491.23
+          }
+        },
+        "harnais_h2_v3": {
+          "passed": true,
+          "tokens": 2231,
+          "time_sec": 23.46,
+          "turns": 1,
+          "blocks": 0,
+          "pred": {
+            "valid_tx_count": 145,
+            "stripe_fees_total_usd": 655.71,
+            "affiliate_payout_usd": 963.8,
+            "final_net_payout_usd": 11491.23
+          }
+        }
+      },
+      "t2_code": {
+        "sans_harnais": {
+          "passed": false,
+          "tokens": 3464,
+          "time_sec": 40.69,
+          "turns": 1,
+          "blocks": 0
+        },
+        "harnais_h2_v3": {
+          "passed": true,
+          "tokens": 2178,
+          "time_sec": 24.32,
+          "turns": 1,
+          "blocks": 0
+        }
+      }
+    },
+    {
+      "category": "CASCADE_H2_v3",
+      "spec": "cascade:local:gemma-4-e2b->freellm:auto->deepseek:deepseek-chat",
+      "label": "Cascade H2 v3 (Local 2B -> FreeLLM :3011 $0 -> DeepSeek)",
+      "sans_harnais_score": "0/2",
+      "harnais_h2_v3_score": "2/2 (Résolu à $0.00 sur FreeLLM :3011 !)",
+      "sans_harnais_tokens": 39529,
+      "harnais_h2_v3_tokens": 7132,
+      "token_reduction_factor": 5.54,
+      "stop_hook_recoveries": 2
+    }
+  ]
+}

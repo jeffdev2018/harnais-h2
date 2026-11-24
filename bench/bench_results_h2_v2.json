@@ -1,0 +1,66 @@
+{
+  "model": "anthropic/claude-sonnet-5.5",
+  "results": [
+    {
+      "task": "T1_STRIPE_DATA",
+      "mode": "SANS_HARNAIS (Chat Pur + RULES.md + CSV en L1)",
+      "model": "anthropic/claude-sonnet-5.5",
+      "passed": false,
+      "tokens": 12608,
+      "time_sec": 13.79,
+      "turns": 1,
+      "stop_hook_blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_tx_count": 145,
+        "stripe_fees_total_usd": 655.71,
+        "affiliate_payout_usd": 963.8,
+        "final_net_payout_usd": 11491.23
+      }
+    },
+    {
+      "task": "T1_STRIPE_DATA",
+      "mode": "HARNAIS_H2_v2 (Mode Cuisine L1 + Python L2 + Juge 444)",
+      "model": "anthropic/claude-sonnet-5.5",
+      "passed": true,
+      "tokens": 3185,
+      "time_sec": 11.83,
+      "turns": 1,
+      "stop_hook_blocks": 0,
+      "predicted": {
+        "valid_tx_count": 145,
+        "stripe_fees_total_usd": 655.71,
+        "affiliate_payout_usd": 963.8,
+        "final_net_payout_usd": 11491.23
+      },
+      "ground_truth": {
+        "valid_tx_count": 145,
+        "stripe_fees_total_usd": 655.71,
+        "affiliate_payout_usd": 963.8,
+        "final_net_payout_usd": 11491.23
+      }
+    },
+    {
+      "task": "T2_TIMELINE_CODE",
+      "mode": "SANS_HARNAIS (Dump JSON complet + 0 Stop Hook)",
+      "model": "anthropic/claude-sonnet-5.5",
+      "passed": false,
+      "tokens": 34326,
+      "time_sec": 19.66,
+      "turns": 1,
+      "stop_hook_blocks": 0,
+      "judge_output": "Traceback (most recent call last):\n  File \"/var/folders/kg/70sjp1957c391fxbytxvlbqh0000gn/T/h2_bench_8z8i2r6n/test_timeline_judge.py\", line 12, in <module>\n    from timeline_engine import build_timeline_from_words\n  File \"/private/var/folders/kg/70sjp1957c391fxbytxvlbqh0000gn/T/h2_bench_8z8i2r6n/timeline_engine.py\", line 1\n    Voici le fichier corrigé. Je n'ai pas pu l'exécuter ici : j'ai vérifié les calculs à la main sur le JSON fourni (320 mots, 80 sous-titres, écarts de 0,02 à 0,03 s entre mots).\n                                                               ^\nSyntaxError: unterminated string literal (detected at line 1)"
+    },
+    {
+      "task": "T2_TIMELINE_CODE",
+      "mode": "HARNAIS_H2_v2 (Mode Cuisine + PostToolUse + Stop Hook 444)",
+      "model": "anthropic/claude-sonnet-5.5",
+      "passed": true,
+      "tokens": 15029,
+      "time_sec": 35.51,
+      "turns": 3,
+      "stop_hook_blocks": 2,
+      "judge_output": "VERIFY_GATE + JUGE TIMELINE (chmod 444) : OK"
+    }
+  ]
+}

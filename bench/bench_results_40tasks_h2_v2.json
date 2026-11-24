@@ -1,0 +1,1319 @@
+{
+  "model": "deepseek-chat",
+  "total_tasks": 40,
+  "total_evaluations": 80,
+  "global_summary": {
+    "sans_harnais_score": "5/40 (12.5%)",
+    "harnais_h2_v2_score": "36/40 (90.0%)",
+    "sans_harnais_total_tokens": 703753,
+    "harnais_h2_v2_total_tokens": 112733,
+    "token_reduction_factor": 6.24,
+    "total_stop_hook_blocks_and_recoveries": 19
+  },
+  "tiers": {
+    "1": {
+      "label": "Palier 1 — SIMPLE (T01..T10)",
+      "sans_harnais_pass": "2/10",
+      "harnais_h2_pass": "10/10",
+      "sans_harnais_tokens": 90764,
+      "harnais_h2_tokens": 21414,
+      "token_reduction_factor": 4.24,
+      "stop_hook_recoveries": 3
+    },
+    "2": {
+      "label": "Palier 2 — INTERMÉDIAIRE (T11..T20)",
+      "sans_harnais_pass": "2/10",
+      "harnais_h2_pass": "10/10",
+      "sans_harnais_tokens": 139408,
+      "harnais_h2_tokens": 30207,
+      "token_reduction_factor": 4.62,
+      "stop_hook_recoveries": 6
+    },
+    "3": {
+      "label": "Palier 3 — AVANCÉ (T21..T30)",
+      "sans_harnais_pass": "1/10",
+      "harnais_h2_pass": "10/10",
+      "sans_harnais_tokens": 201243,
+      "harnais_h2_tokens": 30387,
+      "token_reduction_factor": 6.62,
+      "stop_hook_recoveries": 5
+    },
+    "4": {
+      "label": "Palier 4 — EXTRÊME (T31..T40)",
+      "sans_harnais_pass": "0/10",
+      "harnais_h2_pass": "6/10",
+      "sans_harnais_tokens": 272338,
+      "harnais_h2_tokens": 30725,
+      "token_reduction_factor": 8.86,
+      "stop_hook_recoveries": 5
+    }
+  },
+  "details": [
+    {
+      "id": "T01",
+      "tier": 1,
+      "domain": "DATA_CUISINE",
+      "title": "Simple : Total factures PAID",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 6638,
+      "time_sec": 8.03,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 73,
+        "net_total_usd": 6028.78
+      }
+    },
+    {
+      "id": "T01",
+      "tier": 1,
+      "domain": "DATA_CUISINE",
+      "title": "Simple : Total factures PAID",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1410,
+      "time_sec": 2.16,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 73,
+        "net_total_usd": 6028.78
+      },
+      "ground_truth": {
+        "valid_count": 73,
+        "net_total_usd": 6028.78
+      }
+    },
+    {
+      "id": "T02",
+      "tier": 1,
+      "domain": "DATA_CUISINE",
+      "title": "Simple : Panier net après remise fixe",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 6853,
+      "time_sec": 7.58,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 77,
+        "net_total_usd": 6558.79
+      }
+    },
+    {
+      "id": "T02",
+      "tier": 1,
+      "domain": "DATA_CUISINE",
+      "title": "Simple : Panier net après remise fixe",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1508,
+      "time_sec": 2.86,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 77,
+        "net_total_usd": 6558.79
+      },
+      "ground_truth": {
+        "valid_count": 77,
+        "net_total_usd": 6558.79
+      }
+    },
+    {
+      "id": "T03",
+      "tier": 1,
+      "domain": "DATA_CUISINE",
+      "title": "Simple : Revenu abonnements PRO",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 7067,
+      "time_sec": 8.14,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 32,
+        "net_total_usd": 2864.93
+      }
+    },
+    {
+      "id": "T03",
+      "tier": 1,
+      "domain": "DATA_CUISINE",
+      "title": "Simple : Revenu abonnements PRO",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1549,
+      "time_sec": 2.57,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 32,
+        "net_total_usd": 2864.93
+      },
+      "ground_truth": {
+        "valid_count": 32,
+        "net_total_usd": 2864.93
+      }
+    },
+    {
+      "id": "T04",
+      "tier": 1,
+      "domain": "DATA_CUISINE",
+      "title": "Simple : Total dépenses en USD uniquement",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 7302,
+      "time_sec": 8.04,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 37,
+        "net_total_usd": 3126.86
+      }
+    },
+    {
+      "id": "T04",
+      "tier": 1,
+      "domain": "DATA_CUISINE",
+      "title": "Simple : Total dépenses en USD uniquement",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1551,
+      "time_sec": 2.51,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 37,
+        "net_total_usd": 3126.86
+      },
+      "ground_truth": {
+        "valid_count": 37,
+        "net_total_usd": 3126.86
+      }
+    },
+    {
+      "id": "T05",
+      "tier": 1,
+      "domain": "DATA_CUISINE",
+      "title": "Simple : Solde après remboursements directs",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 7513,
+      "time_sec": 8.23,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 90,
+        "net_total_usd": 6019.8
+      }
+    },
+    {
+      "id": "T05",
+      "tier": 1,
+      "domain": "DATA_CUISINE",
+      "title": "Simple : Solde après remboursements directs",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1465,
+      "time_sec": 2.31,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 90,
+        "net_total_usd": 6019.8
+      },
+      "ground_truth": {
+        "valid_count": 90,
+        "net_total_usd": 6019.8
+      }
+    },
+    {
+      "id": "T06",
+      "tier": 1,
+      "domain": "CODE_VIDEO",
+      "title": "Code Simple : Fix overlap sous-titres (+0.15s pad)",
+      "mode": "SANS_HARNAIS",
+      "passed": true,
+      "tokens": 9837,
+      "time_sec": 5.1,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "JUGE 444 OK"
+    },
+    {
+      "id": "T06",
+      "tier": 1,
+      "domain": "CODE_VIDEO",
+      "title": "Code Simple : Fix overlap sous-titres (+0.15s pad)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1481,
+      "time_sec": 2.88,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T07",
+      "tier": 1,
+      "domain": "CODE_VIDEO",
+      "title": "Code Simple : Filtrer scènes duration <= 0",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 10400,
+      "time_sec": 3.69,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide conservée : {'id': 's_bad_black_opacity', 'start': "
+    },
+    {
+      "id": "T07",
+      "tier": 1,
+      "domain": "CODE_VIDEO",
+      "title": "Code Simple : Filtrer scènes duration <= 0",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 3657,
+      "time_sec": 6.07,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T08",
+      "tier": 1,
+      "domain": "CODE_VIDEO",
+      "title": "Code Simple : Filtrer scènes opacity <= 0 (écran noir)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 11016,
+      "time_sec": 2.78,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 5 scènes au lieu de 3 | Scène invalide conservée : {'id': 's_bad_zero_dur', 'start': 10.0,"
+    },
+    {
+      "id": "T08",
+      "tier": 1,
+      "domain": "CODE_VIDEO",
+      "title": "Code Simple : Filtrer scènes opacity <= 0 (écran noir)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 3765,
+      "time_sec": 4.52,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T09",
+      "tier": 1,
+      "domain": "CODE_VIDEO",
+      "title": "Code Simple : Ajouter tail_pad +0.25s à la durée finale",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 11515,
+      "time_sec": 2.35,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : total_duration_sec et scenes[-1]['end'] doivent valoir voice_duration_sec + 0.25 = 42.65s (et scenes[-1]['duration'] mis à jour), obtenu total=42.65, last_end=35.0"
+    },
+    {
+      "id": "T09",
+      "tier": 1,
+      "domain": "CODE_VIDEO",
+      "title": "Code Simple : Ajouter tail_pad +0.25s à la durée finale",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 3511,
+      "time_sec": 4.55,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T10",
+      "tier": 1,
+      "domain": "CODE_VIDEO",
+      "title": "Code Simple : Regrouper les mots par paquets de 4",
+      "mode": "SANS_HARNAIS",
+      "passed": true,
+      "tokens": 12623,
+      "time_sec": 3.59,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "JUGE 444 OK"
+    },
+    {
+      "id": "T10",
+      "tier": 1,
+      "domain": "CODE_VIDEO",
+      "title": "Code Simple : Regrouper les mots par paquets de 4",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1517,
+      "time_sec": 2.75,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T11",
+      "tier": 2,
+      "domain": "DATA_CUISINE",
+      "title": "Intermédiaire : Taxes 8.5% par ligne + Remboursements",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 9289,
+      "time_sec": 7.65,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 122,
+        "net_total_usd": 8912.42
+      }
+    },
+    {
+      "id": "T11",
+      "tier": 2,
+      "domain": "DATA_CUISINE",
+      "title": "Intermédiaire : Taxes 8.5% par ligne + Remboursements",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1517,
+      "time_sec": 2.66,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 122,
+        "net_total_usd": 8912.42
+      },
+      "ground_truth": {
+        "valid_count": 122,
+        "net_total_usd": 8912.42
+      }
+    },
+    {
+      "id": "T12",
+      "tier": 2,
+      "domain": "DATA_CUISINE",
+      "title": "Intermédiaire : Frais FX 2.5% hors USD + Filtre PRO/TEAM",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 9817,
+      "time_sec": 8.58,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 84,
+        "net_total_usd": 8660.6
+      }
+    },
+    {
+      "id": "T12",
+      "tier": 2,
+      "domain": "DATA_CUISINE",
+      "title": "Intermédiaire : Frais FX 2.5% hors USD + Filtre PRO/TEAM",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1626,
+      "time_sec": 2.66,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 84,
+        "net_total_usd": 8660.6
+      },
+      "ground_truth": {
+        "valid_count": 84,
+        "net_total_usd": 8660.6
+      }
+    },
+    {
+      "id": "T13",
+      "tier": 2,
+      "domain": "DATA_CUISINE",
+      "title": "Intermédiaire : Frais processeur 2.9%+$0.30 par transaction",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 9964,
+      "time_sec": 8.19,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 135,
+        "net_total_usd": 12148.18
+      }
+    },
+    {
+      "id": "T13",
+      "tier": 2,
+      "domain": "DATA_CUISINE",
+      "title": "Intermédiaire : Frais processeur 2.9%+$0.30 par transaction",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1464,
+      "time_sec": 2.14,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 135,
+        "net_total_usd": 12148.18
+      },
+      "ground_truth": {
+        "valid_count": 135,
+        "net_total_usd": 12148.18
+      }
+    },
+    {
+      "id": "T14",
+      "tier": 2,
+      "domain": "DATA_CUISINE",
+      "title": "Intermédiaire : Commission affilié 15% sur brut PAID",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 10175,
+      "time_sec": 8.26,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 139,
+        "net_total_usd": 12786.6
+      }
+    },
+    {
+      "id": "T14",
+      "tier": 2,
+      "domain": "DATA_CUISINE",
+      "title": "Intermédiaire : Commission affilié 15% sur brut PAID",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1504,
+      "time_sec": 2.69,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 139,
+        "net_total_usd": 12786.6
+      },
+      "ground_truth": {
+        "valid_count": 139,
+        "net_total_usd": 12786.6
+      }
+    },
+    {
+      "id": "T15",
+      "tier": 2,
+      "domain": "DATA_CUISINE",
+      "title": "Intermédiaire : Remise -10% sur paniers >= $100 + Refunds",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 10565,
+      "time_sec": 8.51,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 147,
+        "net_total_usd": 9992.04
+      }
+    },
+    {
+      "id": "T15",
+      "tier": 2,
+      "domain": "DATA_CUISINE",
+      "title": "Intermédiaire : Remise -10% sur paniers >= $100 + Refunds",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1509,
+      "time_sec": 2.2,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 147,
+        "net_total_usd": 9992.04
+      },
+      "ground_truth": {
+        "valid_count": 147,
+        "net_total_usd": 9992.04
+      }
+    },
+    {
+      "id": "T16",
+      "tier": 2,
+      "domain": "CODE_VIDEO",
+      "title": "Code Intermédiaire : Anti-overlap sous-titres + Tail pad +0.25s",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 15216,
+      "time_sec": 3.17,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide conservée : {'id': 's_bad_black_opacity', 'start': "
+    },
+    {
+      "id": "T16",
+      "tier": 2,
+      "domain": "CODE_VIDEO",
+      "title": "Code Intermédiaire : Anti-overlap sous-titres + Tail pad +0.25s",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 6640,
+      "time_sec": 8.39,
+      "turns": 3,
+      "blocks": 2,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T17",
+      "tier": 2,
+      "domain": "CODE_VIDEO",
+      "title": "Code Intermédiaire : Filtre scènes noires + Recalcul curseur continu",
+      "mode": "SANS_HARNAIS",
+      "passed": true,
+      "tokens": 17722,
+      "time_sec": 8.49,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "JUGE 444 OK"
+    },
+    {
+      "id": "T17",
+      "tier": 2,
+      "domain": "CODE_VIDEO",
+      "title": "Code Intermédiaire : Filtre scènes noires + Recalcul curseur continu",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 3695,
+      "time_sec": 5.33,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T18",
+      "tier": 2,
+      "domain": "CODE_VIDEO",
+      "title": "Code Intermédiaire : Anti-overlap + Filtre scènes duration <= 0",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 18264,
+      "time_sec": 5.12,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide conservée : {'id': 's_bad_black_opacity', 'start': "
+    },
+    {
+      "id": "T18",
+      "tier": 2,
+      "domain": "CODE_VIDEO",
+      "title": "Code Intermédiaire : Anti-overlap + Filtre scènes duration <= 0",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 3687,
+      "time_sec": 5.43,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T19",
+      "tier": 2,
+      "domain": "CODE_VIDEO",
+      "title": "Code Intermédiaire : Groupement 4 mots + Extension dernière scène à voice+0.25s",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 18858,
+      "time_sec": 4.66,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Overlap sous-titre #1 (end=0.9) > #2 (start=0.73) | Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide"
+    },
+    {
+      "id": "T19",
+      "tier": 2,
+      "domain": "CODE_VIDEO",
+      "title": "Code Intermédiaire : Groupement 4 mots + Extension dernière scène à voice+0.25s",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 3602,
+      "time_sec": 5.21,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T20",
+      "tier": 2,
+      "domain": "CODE_VIDEO",
+      "title": "Code Intermédiaire : Normalisation texte + Anti-overlap captions",
+      "mode": "SANS_HARNAIS",
+      "passed": true,
+      "tokens": 19538,
+      "time_sec": 3.99,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "JUGE 444 OK"
+    },
+    {
+      "id": "T20",
+      "tier": 2,
+      "domain": "CODE_VIDEO",
+      "title": "Code Intermédiaire : Normalisation texte + Anti-overlap captions",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 4963,
+      "time_sec": 7.89,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T21",
+      "tier": 3,
+      "domain": "DATA_CUISINE",
+      "title": "Avancé : Déduplication Gmail <15m + Frais 2.9%+$0.30",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 12916,
+      "time_sec": 7.89,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 169,
+        "net_total_usd": 15949.2
+      }
+    },
+    {
+      "id": "T21",
+      "tier": 3,
+      "domain": "DATA_CUISINE",
+      "title": "Avancé : Déduplication Gmail <15m + Frais 2.9%+$0.30",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1629,
+      "time_sec": 2.64,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 169,
+        "net_total_usd": 15949.2
+      },
+      "ground_truth": {
+        "valid_count": 169,
+        "net_total_usd": 15949.2
+      }
+    },
+    {
+      "id": "T22",
+      "tier": 3,
+      "domain": "DATA_CUISINE",
+      "title": "Avancé : Doublons Gmail + Frais FX 1.5% + Refunds non-remboursés",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 13284,
+      "time_sec": 8.03,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 166,
+        "net_total_usd": 11815.14
+      }
+    },
+    {
+      "id": "T22",
+      "tier": 3,
+      "domain": "DATA_CUISINE",
+      "title": "Avancé : Doublons Gmail + Frais FX 1.5% + Refunds non-remboursés",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1646,
+      "time_sec": 3.1,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 166,
+        "net_total_usd": 11815.14
+      },
+      "ground_truth": {
+        "valid_count": 166,
+        "net_total_usd": 11815.14
+      }
+    },
+    {
+      "id": "T23",
+      "tier": 3,
+      "domain": "DATA_CUISINE",
+      "title": "Avancé : Doublons Gmail + Pénalité Litige $15 + Frais",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 13789,
+      "time_sec": 8.6,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 181,
+        "net_total_usd": 15181.96
+      }
+    },
+    {
+      "id": "T23",
+      "tier": 3,
+      "domain": "DATA_CUISINE",
+      "title": "Avancé : Doublons Gmail + Pénalité Litige $15 + Frais",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1551,
+      "time_sec": 2.37,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 181,
+        "net_total_usd": 15181.96
+      },
+      "ground_truth": {
+        "valid_count": 181,
+        "net_total_usd": 15181.96
+      }
+    },
+    {
+      "id": "T24",
+      "tier": 3,
+      "domain": "DATA_CUISINE",
+      "title": "Avancé : Doublons Gmail + Remise PRO -12% + Frais sur net remisé",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 14137,
+      "time_sec": 8.59,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 188,
+        "net_total_usd": 16274.74
+      }
+    },
+    {
+      "id": "T24",
+      "tier": 3,
+      "domain": "DATA_CUISINE",
+      "title": "Avancé : Doublons Gmail + Remise PRO -12% + Frais sur net remisé",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1608,
+      "time_sec": 3.15,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 188,
+        "net_total_usd": 16274.74
+      },
+      "ground_truth": {
+        "valid_count": 188,
+        "net_total_usd": 16274.74
+      }
+    },
+    {
+      "id": "T25",
+      "tier": 3,
+      "domain": "DATA_CUISINE",
+      "title": "Avancé : Doublons Gmail + Part Monteur 18% après frais",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 14620,
+      "time_sec": 8.24,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 191,
+        "net_total_usd": 15427.62
+      }
+    },
+    {
+      "id": "T25",
+      "tier": 3,
+      "domain": "DATA_CUISINE",
+      "title": "Avancé : Doublons Gmail + Part Monteur 18% après frais",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1671,
+      "time_sec": 2.48,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 191,
+        "net_total_usd": 15427.62
+      },
+      "ground_truth": {
+        "valid_count": 191,
+        "net_total_usd": 15427.62
+      }
+    },
+    {
+      "id": "T26",
+      "tier": 3,
+      "domain": "CODE_VIDEO",
+      "title": "Code Avancé : 3 bugs (Anti-overlap + Scènes noires + Tail pad +0.25s)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 23563,
+      "time_sec": 3.31,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide conservée : {'id': 's_bad_black_opacity', 'start': "
+    },
+    {
+      "id": "T26",
+      "tier": 3,
+      "domain": "CODE_VIDEO",
+      "title": "Code Avancé : 3 bugs (Anti-overlap + Scènes noires + Tail pad +0.25s)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 3657,
+      "time_sec": 6.36,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T27",
+      "tier": 3,
+      "domain": "CODE_VIDEO",
+      "title": "Code Avancé : 3 bugs Timeline HyperFrames (340 mots)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 25093,
+      "time_sec": 4.86,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide conservée : {'id': 's_bad_black_opacity', 'start': "
+    },
+    {
+      "id": "T27",
+      "tier": 3,
+      "domain": "CODE_VIDEO",
+      "title": "Code Avancé : 3 bugs Timeline HyperFrames (340 mots)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 4089,
+      "time_sec": 6.38,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T28",
+      "tier": 3,
+      "domain": "CODE_VIDEO",
+      "title": "Code Avancé : 3 bugs Synchronisation Audio/Captions/Scènes (360 mots)",
+      "mode": "SANS_HARNAIS",
+      "passed": true,
+      "tokens": 26698,
+      "time_sec": 5.2,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "JUGE 444 OK"
+    },
+    {
+      "id": "T28",
+      "tier": 3,
+      "domain": "CODE_VIDEO",
+      "title": "Code Avancé : 3 bugs Synchronisation Audio/Captions/Scènes (360 mots)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 4741,
+      "time_sec": 7.34,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T29",
+      "tier": 3,
+      "domain": "CODE_VIDEO",
+      "title": "Code Avancé : 3 bugs Moteur RAEA Short (380 mots)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 27904,
+      "time_sec": 4.87,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Overlap sous-titre #1 (end=0.71) > #2 (start=0.55) | Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalid"
+    },
+    {
+      "id": "T29",
+      "tier": 3,
+      "domain": "CODE_VIDEO",
+      "title": "Code Avancé : 3 bugs Moteur RAEA Short (380 mots)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 5041,
+      "time_sec": 9.19,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T30",
+      "tier": 3,
+      "domain": "CODE_VIDEO",
+      "title": "Code Avancé : 3 bugs Export Studio Hors Modèle (400 mots)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 29239,
+      "time_sec": 4.42,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide conservée : {'id': 's_bad_black_opacity', 'start': "
+    },
+    {
+      "id": "T30",
+      "tier": 3,
+      "domain": "CODE_VIDEO",
+      "title": "Code Avancé : 3 bugs Export Studio Hors Modèle (400 mots)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 4754,
+      "time_sec": 8.01,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T31",
+      "tier": 4,
+      "domain": "DATA_CUISINE",
+      "title": "Extrême : Réconciliation Stripe complète (340 lignes, 5 règles)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 17693,
+      "time_sec": 7.87,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 246,
+        "net_total_usd": 16003.78
+      }
+    },
+    {
+      "id": "T31",
+      "tier": 4,
+      "domain": "DATA_CUISINE",
+      "title": "Extrême : Réconciliation Stripe complète (340 lignes, 5 règles)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 1950,
+      "time_sec": 3.35,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 246,
+        "net_total_usd": 16003.78
+      },
+      "ground_truth": {
+        "valid_count": 246,
+        "net_total_usd": 16003.78
+      }
+    },
+    {
+      "id": "T32",
+      "tier": 4,
+      "domain": "DATA_CUISINE",
+      "title": "Extrême : Audit Royalties Multi-Devises & Chargebacks (360 lignes)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 18502,
+      "time_sec": 9.01,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 255,
+        "net_total_usd": 14496.1
+      }
+    },
+    {
+      "id": "T32",
+      "tier": 4,
+      "domain": "DATA_CUISINE",
+      "title": "Extrême : Audit Royalties Multi-Devises & Chargebacks (360 lignes)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": false,
+      "tokens": 1974,
+      "time_sec": 3.76,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 255,
+        "net_total_usd": 13486.72
+      },
+      "ground_truth": {
+        "valid_count": 255,
+        "net_total_usd": 14496.1
+      }
+    },
+    {
+      "id": "T33",
+      "tier": 4,
+      "domain": "DATA_CUISINE",
+      "title": "Extrême : Clôture Comptable SaaS & Fraude Webhook (380 lignes)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 17192,
+      "time_sec": 3.02,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 291,
+        "net_total_usd": 28473.62
+      },
+      "ground_truth": {
+        "valid_count": 274,
+        "net_total_usd": 15540.97
+      }
+    },
+    {
+      "id": "T33",
+      "tier": 4,
+      "domain": "DATA_CUISINE",
+      "title": "Extrême : Clôture Comptable SaaS & Fraude Webhook (380 lignes)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": false,
+      "tokens": 1525,
+      "time_sec": 2.77,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 274,
+        "net_total_usd": 24125.3
+      },
+      "ground_truth": {
+        "valid_count": 274,
+        "net_total_usd": 15540.97
+      }
+    },
+    {
+      "id": "T34",
+      "tier": 4,
+      "domain": "DATA_CUISINE",
+      "title": "Extrême : Grand-Livre Créateur International (400 lignes)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 20087,
+      "time_sec": 13.19,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {},
+      "ground_truth": {
+        "valid_count": 287,
+        "net_total_usd": 17473.9
+      }
+    },
+    {
+      "id": "T34",
+      "tier": 4,
+      "domain": "DATA_CUISINE",
+      "title": "Extrême : Grand-Livre Créateur International (400 lignes)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": false,
+      "tokens": 1463,
+      "time_sec": 2.81,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 287,
+        "net_total_usd": 28409.43
+      },
+      "ground_truth": {
+        "valid_count": 287,
+        "net_total_usd": 17473.9
+      }
+    },
+    {
+      "id": "T35",
+      "tier": 4,
+      "domain": "DATA_CUISINE",
+      "title": "Extrême : Stress-Test Financier 420 transactions (5 règles)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 18602,
+      "time_sec": 0.91,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 300,
+        "net_total_usd": 24576.06
+      },
+      "ground_truth": {
+        "valid_count": 308,
+        "net_total_usd": 19550.92
+      }
+    },
+    {
+      "id": "T35",
+      "tier": 4,
+      "domain": "DATA_CUISINE",
+      "title": "Extrême : Stress-Test Financier 420 transactions (5 règles)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": false,
+      "tokens": 1516,
+      "time_sec": 2.75,
+      "turns": 1,
+      "blocks": 0,
+      "predicted": {
+        "valid_count": 308,
+        "net_total_usd": 28728.33
+      },
+      "ground_truth": {
+        "valid_count": 308,
+        "net_total_usd": 19550.92
+      }
+    },
+    {
+      "id": "T36",
+      "tier": 4,
+      "domain": "CODE_VIDEO",
+      "title": "Code Extrême : 4 bugs (Overlap + Black frames + Tail pad + Calcul WPM exact)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 33267,
+      "time_sec": 4.02,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : WPM doit être calculé sur total_duration_sec (62.6s) : r2((len(words) / total_duration) * 60.0) = 440.89, obtenu 442.66"
+    },
+    {
+      "id": "T36",
+      "tier": 4,
+      "domain": "CODE_VIDEO",
+      "title": "Code Extrême : 4 bugs (Overlap + Black frames + Tail pad + Calcul WPM exact)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 4489,
+      "time_sec": 7.54,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T37",
+      "tier": 4,
+      "domain": "CODE_VIDEO",
+      "title": "Code Extrême : 4 bugs Moteur Complet Multi-Scènes (480 mots)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 34625,
+      "time_sec": 5.53,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Overlap sous-titre #1 (end=0.9) > #2 (start=0.73) | Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide"
+    },
+    {
+      "id": "T37",
+      "tier": 4,
+      "domain": "CODE_VIDEO",
+      "title": "Code Extrême : 4 bugs Moteur Complet Multi-Scènes (480 mots)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 4351,
+      "time_sec": 7.33,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T38",
+      "tier": 4,
+      "domain": "CODE_VIDEO",
+      "title": "Code Extrême : 4 bugs Pipeline Rendu Short 60fps (500 mots)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 36016,
+      "time_sec": 4.23,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide conservée : {'id': 's_bad_black_opacity', 'start': "
+    },
+    {
+      "id": "T38",
+      "tier": 4,
+      "domain": "CODE_VIDEO",
+      "title": "Code Extrême : 4 bugs Pipeline Rendu Short 60fps (500 mots)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 4513,
+      "time_sec": 7.55,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T39",
+      "tier": 4,
+      "domain": "CODE_VIDEO",
+      "title": "Code Extrême : 4 bugs Vérificateur Timeline & Débit Vocal (520 mots)",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 37383,
+      "time_sec": 4.09,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide conservée : {'id': 's_bad_black_opacity', 'start': "
+    },
+    {
+      "id": "T39",
+      "tier": 4,
+      "domain": "CODE_VIDEO",
+      "title": "Code Extrême : 4 bugs Vérificateur Timeline & Débit Vocal (520 mots)",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 4377,
+      "time_sec": 7.48,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    },
+    {
+      "id": "T40",
+      "tier": 4,
+      "domain": "CODE_VIDEO",
+      "title": "Code Extrême : Boss Final — Moteur Studio 4 invariants + 540 mots",
+      "mode": "SANS_HARNAIS",
+      "passed": false,
+      "tokens": 38971,
+      "time_sec": 4.32,
+      "turns": 1,
+      "blocks": 0,
+      "judge_msg": "ÉCHEC JUGE 444 : Les scènes avec duration<=0 ou opacity<=0 doivent être filtrées : obtenu 4 scènes au lieu de 3 | Scène invalide conservée : {'id': 's_bad_black_opacity', 'start': "
+    },
+    {
+      "id": "T40",
+      "tier": 4,
+      "domain": "CODE_VIDEO",
+      "title": "Code Extrême : Boss Final — Moteur Studio 4 invariants + 540 mots",
+      "mode": "HARNAIS_H2_v2",
+      "passed": true,
+      "tokens": 4567,
+      "time_sec": 6.78,
+      "turns": 2,
+      "blocks": 1,
+      "judge_msg": "VERIFY_GATE + JUGE 444 OK"
+    }
+  ]
+}

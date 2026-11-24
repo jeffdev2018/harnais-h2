@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# h2 (v3) — CLI portable du Harnais H2 (Claude Code, Antigravity, Codex, OpenCode & Terminal)
+set -euo pipefail
+H2_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+cmd="${1:-help}"
+shift || true
+
+case "$cmd" in
+  peek)
+    exec python3 "$H2_ROOT/cuisine/cuisine_repl.py" peek "$@"
+    ;;
+  query)
+    exec python3 "$H2_ROOT/cuisine/cuisine_repl.py" query "$@"
+    ;;
+  gc)
+    exec python3 "$H2_ROOT/cuisine/cuisine_repl.py" gc "$@"
+    ;;
+  run)
+    exec python3 "$H2_ROOT/cuisine/cuisine_repl.py" run "$@"
+    ;;
+  verify)
+    exec python3 "$H2_ROOT/core/verify.py" "${1:-.}" "${2:-auto}" "${@:3}"
+    ;;
+  evolve)
+    exec python3 "$H2_ROOT/evolve/modular_evolver.py" "${1:-2}"
+    ;;
+  rollback)
+    exec python3 "$H2_ROOT/evolve/modular_evolver.py" rollback "${1:-cuisine-data}"
+    ;;
+  quarantine)
+    if [ -f "$H2_ROOT/logs/quarantine_patches.json" ]; then
+      cat "$H2_ROOT/logs/quarantine_patches.json"
+    else
+      echo "Aucune erreur en quarantaine."
+    fi
+    ;;
+  lock-judges)
+    exec python3 "$H2_ROOT/judges/lock_judges.py"
+    ;;
+  models)
+    exec python3 "$H2_ROOT/core/providers.py"
+    ;;
+  arena)
+    exec python3 "$H2_ROOT/bench/run_multimodel_h2_arena.py" "$@"
+    ;;
+  bench100)
+    exec python3 "$H2_ROOT/bench/run_h2_100tasks_benchmark.py" "$@"
+    ;;
+  status)
+    python3 "$H2_ROOT/core/verify.py" . auto
+    python3 "$H2_ROOT/cuisine/cuisine_repl.py" gc list
+    echo "--- Profils modèles disponibles ---"
+    python3 -c "import json; p=json.load(open('$H2_ROOT/profiles/model_profiles.json')); print('\n'.join(f'  • {k}: max_turns={v[\"max_turns\"]}, budget={v[\"token_budget\"]} tok' for k,v in p.items()))"
+    ;;
+  *)
+    cat <<EOF
+Harnais H2 v3 — Commandes disponibles :
+  h2 peek <fichier.csv|json>                  Aperçu schéma Mode Cuisine L1 (~120 tokens au lieu du fichier complet)
+  h2 query <fichier.csv|json|l2> "<expr_py>"  Requête Python L2 hors contexte avec save('k',v) / load('k') persistants
+  h2 gc [list|clear|drop <cle>]               Agentic Garbage Collection sur les variables L2 (arXiv:2608.23552)
+  h2 run <script.py> [out.json] [cle1,cle2]   Exécute un calcul Python L2 (AST Mode 4) + valide par Juge chmod 444
+  h2 verify [dossier] [auto|code|data|video]  Lance le Stop Hook (AST Mode 4, GUI-HARVEST, Juges chmod 444)
+  h2 evolve [min_occurrences]                 Promeut les erreurs récurrentes (>=2x) de la quarantaine vers SKILL.md
+  h2 quarantine                               Affiche les erreurs isolées (1x) en quarantaine avec leur provenance
+  h2 rollback [cuisine-data|pi-code|video-studio] Restaure la version précédente d'un SKILL.md (Continual Harness)
+  h2 models                                   Détecte tous les modèles disponibles (Locaux, Gratuits, DeepSeek, Claude, Codex)
+  h2 arena                                    Lance l'Arène Multi-Modèles comparative
+  h2 bench100                                 Lance le Banc d'Essai Progressif des 100 Tâches (Niveaux 1 à 10)
+  h2 status                                   Vérifie l'intégrité chmod 444, la mémoire L2 et les profils modèles
+EOF
+    ;;
+esac

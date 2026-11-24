@@ -1,0 +1,419 @@
+{
+  "total_tasks": 100,
+  "total_evaluations_part1": 200,
+  "global_100_summary": {
+    "sans_harnais_score": "36/100 (36.0%)",
+    "harnais_h2_v3_score": "93/100 (93.0%)",
+    "sans_harnais_tokens": 1530715,
+    "harnais_h2_v3_tokens": 193382,
+    "token_reduction_factor": 7.92,
+    "stop_hook_recoveries": 30
+  },
+  "levels_1_to_10": {
+    "1": {
+      "range": "T001..T010",
+      "desc": "Niveau 1 (Trivial : 1 opération directe, petits fichiers)",
+      "sans_harnais": "6/10 (61,054 tok)",
+      "harnais_h2_v3": "8/10 (18,224 tok, ÷3.4x, 3 rattrapages)"
+    },
+    "2": {
+      "range": "T011..T020",
+      "desc": "Niveau 2 (Simple : 1 filtre conditionnel simple)",
+      "sans_harnais": "4/10 (83,383 tok)",
+      "harnais_h2_v3": "10/10 (17,819 tok, ÷4.7x, 3 rattrapages)"
+    },
+    "3": {
+      "range": "T021..T030",
+      "desc": "Niveau 3 (Élémentaire : 2 conditions ou remise fixe)",
+      "sans_harnais": "5/10 (102,745 tok)",
+      "harnais_h2_v3": "10/10 (17,659 tok, ÷5.8x, 3 rattrapages)"
+    },
+    "4": {
+      "range": "T031..T040",
+      "desc": "Niveau 4 (Intermédiaire - : pourcentages arrondis par ligne)",
+      "sans_harnais": "3/10 (121,828 tok)",
+      "harnais_h2_v3": "9/10 (18,570 tok, ÷6.6x, 3 rattrapages)"
+    },
+    "5": {
+      "range": "T041..T050",
+      "desc": "Niveau 5 (Intermédiaire + : frais fixes + variables + remboursements)",
+      "sans_harnais": "3/10 (142,254 tok)",
+      "harnais_h2_v3": "9/10 (21,158 tok, ÷6.7x, 3 rattrapages)"
+    },
+    "6": {
+      "range": "T051..T060",
+      "desc": "Niveau 6 (Avancé - : multi-devises FX + paliers de remise)",
+      "sans_harnais": "3/10 (162,574 tok)",
+      "harnais_h2_v3": "7/10 (21,289 tok, ÷7.6x, 3 rattrapages)"
+    },
+    "7": {
+      "range": "T061..T070",
+      "desc": "Niveau 7 (Avancé + : déduplication temporelle <15m + alias Gmail)",
+      "sans_harnais": "3/10 (182,812 tok)",
+      "harnais_h2_v3": "10/10 (19,025 tok, ÷9.6x, 3 rattrapages)"
+    },
+    "8": {
+      "range": "T071..T080",
+      "desc": "Niveau 8 (Complexe : doublons Gmail + FX + pénalités de litige $15)",
+      "sans_harnais": "3/10 (204,686 tok)",
+      "harnais_h2_v3": "10/10 (19,355 tok, ÷10.6x, 3 rattrapages)"
+    },
+    "9": {
+      "range": "T081..T090",
+      "desc": "Niveau 9 (Très Complexe : 5 règles croisées + commissions affiliés)",
+      "sans_harnais": "3/10 (224,156 tok)",
+      "harnais_h2_v3": "10/10 (19,684 tok, ÷11.4x, 3 rattrapages)"
+    },
+    "10": {
+      "range": "T091..T100",
+      "desc": "Niveau 10 (Boss Final : réconciliation intégrale 450 lignes / 560 mots + révocation par ref_tx_id)",
+      "sans_harnais": "3/10 (245,223 tok)",
+      "harnais_h2_v3": "10/10 (20,599 tok, ÷11.9x, 3 rattrapages)"
+    }
+  },
+  "multimodel_ladder": [
+    {
+      "category": "LOCAL_M5_METAL",
+      "model_spec": "local:gemma-4-e2b-it-qat:gguf:q4",
+      "label": "Gemma 4 E2B Q4 (Local Apple M5 Pro)",
+      "passed_on_ladder": "2/5",
+      "ladder_breakdown": [
+        "L1:✓",
+        "L3:✓",
+        "L5:✗",
+        "L8:✗",
+        "L10:✗"
+      ],
+      "total_tokens": 37578,
+      "stop_hook_blocks": 10
+    },
+    {
+      "category": "FREELLM_3011",
+      "model_spec": "freellm:auto",
+      "label": "FreeLLM Auto (:3011 $0 -> Nemotron 550B)",
+      "passed_on_ladder": "3/5",
+      "ladder_breakdown": [
+        "L1:✓",
+        "L3:✓",
+        "L5:✗",
+        "L8:✓",
+        "L10:✗"
+      ],
+      "total_tokens": 19870,
+      "stop_hook_blocks": 6
+    },
+    {
+      "category": "DEEPSEEK_API",
+      "model_spec": "deepseek:deepseek-chat",
+      "label": "DeepSeek Chat V3/V4 Direct",
+      "passed_on_ladder": "4/5",
+      "ladder_breakdown": [
+        "L1:✗",
+        "L3:✓",
+        "L5:✓",
+        "L8:✓",
+        "L10:✓"
+      ],
+      "total_tokens": 10789,
+      "stop_hook_blocks": 2,
+      "runs": [
+        {
+          "id": "T001",
+          "level": 1,
+          "domain": "DATA_CUISINE",
+          "model": "deepseek:deepseek-chat",
+          "mode": "HARNAIS_H2_v3",
+          "passed": false,
+          "tokens": 1468,
+          "time_sec": 3.89,
+          "turns": 1,
+          "blocks": 0
+        },
+        {
+          "id": "T026",
+          "level": 3,
+          "domain": "CODE_ALGO",
+          "model": "deepseek:deepseek-chat",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 806,
+          "time_sec": 1.77,
+          "turns": 1,
+          "blocks": 0
+        },
+        {
+          "id": "T048",
+          "level": 5,
+          "domain": "VIDEO_STUDIO",
+          "model": "deepseek:deepseek-chat",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 3388,
+          "time_sec": 4.74,
+          "turns": 2,
+          "blocks": 1
+        },
+        {
+          "id": "T072",
+          "level": 8,
+          "domain": "DATA_CUISINE",
+          "model": "deepseek:deepseek-chat",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 1723,
+          "time_sec": 2.95,
+          "turns": 1,
+          "blocks": 0
+        },
+        {
+          "id": "T100",
+          "level": 10,
+          "domain": "VIDEO_STUDIO",
+          "model": "deepseek:deepseek-chat",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 3404,
+          "time_sec": 6.22,
+          "turns": 2,
+          "blocks": 1
+        }
+      ]
+    },
+    {
+      "category": "CLAUDE_CLI",
+      "model_spec": "cli:claude",
+      "label": "Claude (via Claude Code CLI)",
+      "passed_on_ladder": "4/5",
+      "ladder_breakdown": [
+        "L1:✗",
+        "L3:✓",
+        "L5:✓",
+        "L8:✓",
+        "L10:✓"
+      ],
+      "total_tokens": 15962,
+      "stop_hook_blocks": 3,
+      "runs": [
+        {
+          "id": "T001",
+          "level": 1,
+          "domain": "DATA_CUISINE",
+          "model": "cli:claude",
+          "mode": "HARNAIS_H2_v3",
+          "passed": false,
+          "tokens": 1182,
+          "time_sec": 16.49,
+          "turns": 1,
+          "blocks": 0
+        },
+        {
+          "id": "T026",
+          "level": 3,
+          "domain": "CODE_ALGO",
+          "model": "cli:claude",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 593,
+          "time_sec": 10.28,
+          "turns": 1,
+          "blocks": 0
+        },
+        {
+          "id": "T048",
+          "level": 5,
+          "domain": "VIDEO_STUDIO",
+          "model": "cli:claude",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 4943,
+          "time_sec": 53.99,
+          "turns": 2,
+          "blocks": 1
+        },
+        {
+          "id": "T072",
+          "level": 8,
+          "domain": "DATA_CUISINE",
+          "model": "cli:claude",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 1403,
+          "time_sec": 16.48,
+          "turns": 1,
+          "blocks": 0
+        },
+        {
+          "id": "T100",
+          "level": 10,
+          "domain": "VIDEO_STUDIO",
+          "model": "cli:claude",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 7841,
+          "time_sec": 82.49,
+          "turns": 3,
+          "blocks": 2
+        }
+      ]
+    },
+    {
+      "category": "CHATGPT_CLI",
+      "model_spec": "cli:codex",
+      "label": "ChatGPT (via Codex CLI)",
+      "passed_on_ladder": "4/5",
+      "ladder_breakdown": [
+        "L1:✗",
+        "L3:✓",
+        "L5:✓",
+        "L8:✓",
+        "L10:✓"
+      ],
+      "total_tokens": 285870,
+      "stop_hook_blocks": 2,
+      "runs": [
+        {
+          "id": "T001",
+          "level": 1,
+          "domain": "DATA_CUISINE",
+          "model": "cli:codex",
+          "mode": "HARNAIS_H2_v3",
+          "passed": false,
+          "tokens": 40409,
+          "time_sec": 18.04,
+          "turns": 1,
+          "blocks": 0
+        },
+        {
+          "id": "T026",
+          "level": 3,
+          "domain": "CODE_ALGO",
+          "model": "cli:codex",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 40082,
+          "time_sec": 13.69,
+          "turns": 1,
+          "blocks": 0
+        },
+        {
+          "id": "T048",
+          "level": 5,
+          "domain": "VIDEO_STUDIO",
+          "model": "cli:codex",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 82160,
+          "time_sec": 42.0,
+          "turns": 2,
+          "blocks": 1
+        },
+        {
+          "id": "T072",
+          "level": 8,
+          "domain": "DATA_CUISINE",
+          "model": "cli:codex",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 40835,
+          "time_sec": 18.69,
+          "turns": 1,
+          "blocks": 0
+        },
+        {
+          "id": "T100",
+          "level": 10,
+          "domain": "VIDEO_STUDIO",
+          "model": "cli:codex",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 82384,
+          "time_sec": 50.87,
+          "turns": 2,
+          "blocks": 1
+        }
+      ]
+    },
+    {
+      "category": "CASCADE_H2_v3",
+      "model_spec": "cascade:h2_v3",
+      "label": "Cascade H2 v3 (Local 2B -> FreeLLM $0 -> DeepSeek)",
+      "passed_on_ladder": "5/5",
+      "ladder_breakdown": [
+        "L1:✓",
+        "L3:✓",
+        "L5:✓",
+        "L8:✓",
+        "L10:✓"
+      ],
+      "total_tokens": 36636,
+      "stop_hook_blocks": 12,
+      "runs": [
+        {
+          "id": "T001",
+          "level": 1,
+          "domain": "DATA_CUISINE",
+          "model": "cascade:h2_v3",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 2559,
+          "time_sec": 120.51,
+          "turns": 2,
+          "blocks": 1,
+          "resolved_by": "local:gemma-4-e2b-it-qat:gguf:q4"
+        },
+        {
+          "id": "T026",
+          "level": 3,
+          "domain": "CODE_ALGO",
+          "model": "cascade:h2_v3",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 1504,
+          "time_sec": 13.93,
+          "turns": 1,
+          "blocks": 0,
+          "resolved_by": "local:gemma-4-e2b-it-qat:gguf:q4"
+        },
+        {
+          "id": "T048",
+          "level": 5,
+          "domain": "VIDEO_STUDIO",
+          "model": "cascade:h2_v3",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 10685,
+          "time_sec": 29.87,
+          "turns": 2,
+          "blocks": 4,
+          "resolved_by": "deepseek:deepseek-chat"
+        },
+        {
+          "id": "T072",
+          "level": 8,
+          "domain": "DATA_CUISINE",
+          "model": "cascade:h2_v3",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 9097,
+          "time_sec": 72.0,
+          "turns": 1,
+          "blocks": 3,
+          "resolved_by": "deepseek:deepseek-chat"
+        },
+        {
+          "id": "T100",
+          "level": 10,
+          "domain": "VIDEO_STUDIO",
+          "model": "cascade:h2_v3",
+          "mode": "HARNAIS_H2_v3",
+          "passed": true,
+          "tokens": 12791,
+          "time_sec": 48.14,
+          "turns": 2,
+          "blocks": 4,
+          "resolved_by": "deepseek:deepseek-chat"
+        }
+      ]
+    }
+  ]
+}

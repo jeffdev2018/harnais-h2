@@ -1,0 +1,56 @@
+{
+  "claude-opus": {
+    "description": "Claude Opus 5.5 — fort suivi d'instructions, garder l'enveloppe ultra-fine pour éviter la sur-réflexion",
+    "max_turns": 10,
+    "token_budget": 75000,
+    "obs_max_chars": 900,
+    "keep_recent_turns": 2,
+    "force_cuisine_python": true,
+    "require_edits": true
+  },
+  "claude-sonnet": {
+    "description": "Claude Sonnet 5.5 — champion rapport vitesse/coût avec H2 (6.7s, ~1812 tokens/tâche en Mode Cuisine)",
+    "max_turns": 12,
+    "token_budget": 60000,
+    "obs_max_chars": 800,
+    "keep_recent_turns": 2,
+    "force_cuisine_python": true,
+    "require_edits": true
+  },
+  "gemini-4-argon": {
+    "description": "Gemini 4 Argon — chaînes de raisonnement longues, nécessite compaction stricte dès 2 tours (Google 2611.22299 Table IV.B)",
+    "max_turns": 12,
+    "token_budget": 65000,
+    "obs_max_chars": 700,
+    "keep_recent_turns": 2,
+    "force_cuisine_python": true,
+    "require_edits": true
+  },
+  "gemini-4-carbon": {
+    "description": "Gemini 4 Carbon — passe de 1/6 (49k tok) à 6/6 (2.1k tok) avec Mode Cuisine + Stop Hook déterministe",
+    "max_turns": 12,
+    "token_budget": 60000,
+    "obs_max_chars": 700,
+    "keep_recent_turns": 2,
+    "force_cuisine_python": true,
+    "require_edits": true
+  },
+  "gpt-6": {
+    "description": "GPT-6.2 Astra — éviter la Taxe de Harnais Codex CLI (121k tok) en bornant les tours et les observations shell",
+    "max_turns": 10,
+    "token_budget": 55000,
+    "obs_max_chars": 650,
+    "keep_recent_turns": 2,
+    "force_cuisine_python": true,
+    "require_edits": true
+  },
+  "deepseek": {
+    "description": "DeepSeek Flash / V4 — besoin impératif du garde empty-diff et du Stop Hook Python (passe de 1/6 à 6/6)",
+    "max_turns": 12,
+    "token_budget": 50000,
+    "obs_max_chars": 600,
+    "keep_recent_turns": 2,
+    "force_cuisine_python": true,
+    "require_edits": true
+  }
+}
