@@ -294,7 +294,87 @@ def discover_all_machine_models() -> list[dict[str, str]]:
     return found
 
 
+COMPLEX_KEYWORDS = (
+    "ref_tx_id",
+    "dispute",
+    "litige",
+    "affili",
+    "doublon",
+    "gmail",
+    "gherkin",
+    "rg-",
+    "overlap",
+    "blackdetect",
+    "wpm",
+    "ast",
+    "deadlock",
+    "concurrency",
+    "multi-devises",
+    "architecture",
+    "security",
+)
+
+
+def classify_task_complexity(prompt: str, files: list[Path] | None = None) -> dict[str, Any]:
+    """
+    Brique v4.3 — Pré-Routeur Déterministe de Complexité (< 2 ms, 0 token LLM)
+    Sources : MoSIB & Turbo Harness (Google arXiv:2611.22299 §V [43, 44])
+    Évite de gaspiller 2 tours sur un petit modèle local/gratuit quand la tâche est de Niveau 8..10.
+    """
+    t0 = time.perf_counter()
+    low = prompt.lower()
+
+    # 1. Compter les règles/étapes numérotées (en début de ligne ou inline) et mots-clés complexes
+    numbered_rules = len(re.findall(r"(?:^|\s)(?:\d+[\)\.]|[-•*])\s+", prompt))
+    kw_hits = [kw for kw in COMPLEX_KEYWORDS if kw in low]
+
+    # 2. Évaluer le volume des fichiers attachés (en L3)
+    file_list = [p for p in (files or []) if p.exists() and p.is_file()]
+    total_kb = sum(p.stat().st_size for p in file_list) / 1024.0
+    multi_file_bonus = 2 if len(file_list) >= 2 else 0
+
+    raw_score = 1 + min(4, numbered_rules) + min(6, len(kw_hits)) + (2 if total_kb > 20 else (1 if total_kb > 8 else 0)) + multi_file_bonus
+    score = max(1, min(10, raw_score))
+
+    if score <= 3:
+        tier = "LOCAL_2B"
+        chain = ["local:gemma-4-e2b-it-qat:gguf:q4", "freellm:auto", "deepseek:deepseek-chat"]
+        reason = "Tâche simple (Niveau 1-3) -> routage direct sur Modèle Local 2B M5 Pro ($0.00, ~0.3s)."
+    elif score <= 7:
+        tier = "FREE_3011"
+        chain = ["freellm:auto", "deepseek:deepseek-chat", "cli:claude"]
+        reason = "Tâche intermédiaire/avancée (Niveau 4-7) -> saute le 2B local, route sur FreeLLM :3011 ($0.00)."
+    else:
+        tier = "FRONTIER"
+        chain = ["deepseek:deepseek-chat", "cli:claude"]
+        reason = "Tâche haute complexité (Niveau 8-10) -> saute les petits modèles, route direct sur Frontier (0 tour perdu)."
+
+    elapsed_ms = round((time.perf_counter() - t0) * 1000.0, 3)
+    return {
+        "complexity_score": score,
+        "recommended_tier": tier,
+        "recommended_model": chain[0],
+        "cascade_chain": chain,
+        "signals": {
+            "numbered_rules": numbered_rules,
+            "complex_keywords_found": kw_hits,
+            "files_count": len(file_list),
+            "total_kb": round(total_kb, 1),
+        },
+        "routing_latency_ms": elapsed_ms,
+        "reason": reason,
+    }
+
+
 if __name__ == "__main__":
+    import sys as _sys
+
+    if len(_sys.argv) > 1 and _sys.argv[1] == "--route":
+        task_txt = _sys.argv[2] if len(_sys.argv) > 2 else ""
+        f_paths = [Path(p) for p in _sys.argv[3:]]
+        print(json.dumps(classify_task_complexity(task_txt, f_paths), indent=2, ensure_ascii=False))
+        _sys.exit(0)
+
     models = discover_all_machine_models()
     print(f"🔍 {len(models)} modèles/moteurs détectés sur ce Mac :")
     for m in models[:25]:

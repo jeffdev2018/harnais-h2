@@ -13,4 +13,4 @@ description: Harnais Production Vidéo & Shorts (Avelis_evo1 / HyperFrames / RAE
    - Toute planche contact (`dod_contact_sheet.png`) doit exister et faire > 5 Ko avant de conclure.
 
 ## Cas limites appris (patcher 1 ligne par erreur réelle)
-- `[Patch #1]` Toujours vérifier que `short.html` / `index.html` se ferme proprement par `</html>` avant le rendu.
+- `[Patch #1]` (UNIQUEMENT SI applicable à la consigne) : Toujours vérifier que `short.html` / `index.html` se ferme proprement par `</html>` avant le rendu.

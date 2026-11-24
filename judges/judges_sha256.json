@@ -1,5 +1,9 @@
 {
+  "judge_af.py": "d489ff79382a915b7100c2bf05f8dfa86abee1ce28a1bfb9160b92d52883d7ae",
   "judge_code.py": "7ff509401bc7dc325ed726f0abff14eba52dea12aa916cf4b71fd12607d61228",
   "judge_data.py": "2c1a614d37b92d63d70829962edfd73535211d0e5ceee0b6f63fb08634bce18a",
+  "judge_ops.py": "dd2546622633cefc7c584490aaa4dc5ec1a6f9452ae9e7dfed9eda13e6a2b3a7",
+  "judge_po.py": "93e28e930bf7b03ec025ed36bbf2eedc2df7f98eeed3e34cd64d2706486b4440",
+  "judge_qa.py": "9143fb7b8d878f417c96725b665de3531e4e74bd71ca1138c9d3d2736731000d",
   "judge_video.py": "d205e12a169d044883200aedeeae59188570998ad55e8a1e42cd69386544876c"
 }

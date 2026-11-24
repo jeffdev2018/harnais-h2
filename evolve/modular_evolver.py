@@ -225,6 +225,82 @@ def rollback_skill(skill_domain: str) -> int:
     return 0
 
 
+def prune_all_skills() -> int:
+    """
+    Brique v4.4 — Élagage Automatique & Hygiène de Portée (`h2 prune`)
+    Sources : Anthropic (Harness-as-Assumption) & Google arXiv:2611.22299 Table II Mode 1 & Table III.B.3
+    Inspecte tous les `skills/*/SKILL.md` :
+      1. Supprime les règles `[Patch #N]` en doublon ou contenant un pattern toxique.
+      2. Vérifie que chaque règle `[Patch #N]` possède une condition de déclenchement explicite
+         `(UNIQUEMENT SI ...)` pour empêcher la sur-généralisation sur les tâches simples (Mode 1).
+      3. Élagage au plafond de budget tokens (<= 450 tokens par SKILL.md).
+    """
+    pruned_count = 0
+    scoped_count = 0
+    for skill_file in sorted(SKILLS_DIR.glob("*/SKILL.md")):
+        lines = skill_file.read_text(encoding="utf-8").splitlines()
+        header_lines: list[str] = []
+        patch_bodies: list[str] = []
+        seen_bodies: set[str] = set()
+        modified = False
+
+        for ln in lines:
+            s = ln.strip()
+            if s.startswith("- `[Patch #"):
+                body = re.sub(r"^-\s*`\[Patch\s*#\d+\]`\s*", "", s).strip()
+                # 1. Filtrer doublons et règles toxiques
+                norm_key = body.lower()
+                if norm_key in seen_bodies or any(p.lower() in norm_key for p in POISON_PATTERNS):
+                    pruned_count += 1
+                    modified = True
+                    continue
+                seen_bodies.add(norm_key)
+
+                # 2. Garantir le cadrage conditionnel (Mode 1 Anti-Overgeneralization)
+                if not body.upper().startswith("(UNIQUEMENT"):
+                    if ":" in body:
+                        topic, _, rest = body.partition(":")
+                        body = f"(UNIQUEMENT SI la tâche concerne {topic.strip()}) : {rest.strip()}"
+                    else:
+                        body = f"(UNIQUEMENT SI applicable à la consigne) : {body}"
+                    scoped_count += 1
+                    modified = True
+                patch_bodies.append(body)
+            else:
+                header_lines.append(ln)
+
+        # 3. Respect du plafond MAX_SKILL_PATCHES et MAX_SKILL_TOKENS
+        while len(patch_bodies) > MAX_SKILL_PATCHES:
+            patch_bodies.pop(0)
+            pruned_count += 1
+            modified = True
+
+        rebuilt_patches = [f"- `[Patch #{i + 1}]` {b}" for i, b in enumerate(patch_bodies)]
+        new_content = "\n".join(header_lines + rebuilt_patches).rstrip() + "\n"
+
+        while estimate_tokens(new_content) > MAX_SKILL_TOKENS and len(patch_bodies) > 1:
+            patch_bodies.pop(0)
+            pruned_count += 1
+            modified = True
+            rebuilt_patches = [f"- `[Patch #{i + 1}]` {b}" for i, b in enumerate(patch_bodies)]
+            new_content = "\n".join(header_lines + rebuilt_patches).rstrip() + "\n"
+
+        if modified:
+            VERSIONS_DIR.mkdir(parents=True, exist_ok=True)
+            ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+            shutil.copy2(skill_file, VERSIONS_DIR / f"{skill_file.parent.name}_SKILL_{ts}.md.bak")
+            skill_file.write_text(new_content, encoding="utf-8")
+
+        tok = estimate_tokens(new_content)
+        print(
+            f"  • {skill_file.parent.name:20s} : {len(patch_bodies):2d} patch(es) actifs | "
+            f"{tok:3d}/{MAX_SKILL_TOKENS} tokens | 100% conditionnels (UNIQUEMENT SI)"
+        )
+
+    print(f"[H2 PRUNE TERMINÉ] {pruned_count} règle(s) élaguée(s), {scoped_count} règle(s) recadrée(s) avec condition.")
+    return 0
+
+
 def run_evolution_cycle(min_occurrences: int = 2) -> int:
     clusters, quarantined = stage1_diagnose_failures(min_occurrences=min_occurrences)
     if quarantined:
@@ -248,5 +324,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "rollback":
         dom = sys.argv[2] if len(sys.argv) > 2 else "cuisine-data"
         sys.exit(rollback_skill(dom))
+    if len(sys.argv) > 1 and sys.argv[1] == "prune":
+        sys.exit(prune_all_skills())
     min_occ = int(sys.argv[1]) if len(sys.argv) > 1 else 2
     sys.exit(run_evolution_cycle(min_occurrences=min_occ))

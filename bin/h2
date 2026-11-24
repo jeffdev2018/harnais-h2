@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# h2 (v3) — CLI portable du Harnais H2 (Claude Code, Antigravity, Codex, OpenCode & Terminal)
+# h2 (v4) — CLI unifiée du Harnais H2 (Claude Code, Antigravity, Codex, OpenCode & Terminal)
 set -euo pipefail
 H2_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
@@ -19,11 +19,23 @@ case "$cmd" in
   run)
     exec python3 "$H2_ROOT/cuisine/cuisine_repl.py" run "$@"
     ;;
+  parallel)
+    exec python3 "$H2_ROOT/cuisine/parallel_rlm.py" "$@"
+    ;;
   verify)
     exec python3 "$H2_ROOT/core/verify.py" "${1:-.}" "${2:-auto}" "${@:3}"
     ;;
+  receipt)
+    exec python3 "$H2_ROOT/core/verify.py" --check-receipt "${1:-.}" "${@:2}"
+    ;;
+  route)
+    exec python3 "$H2_ROOT/core/providers.py" --route "$@"
+    ;;
   evolve)
     exec python3 "$H2_ROOT/evolve/modular_evolver.py" "${1:-2}"
+    ;;
+  prune)
+    exec python3 "$H2_ROOT/evolve/modular_evolver.py" prune
     ;;
   rollback)
     exec python3 "$H2_ROOT/evolve/modular_evolver.py" rollback "${1:-cuisine-data}"
@@ -50,24 +62,26 @@ case "$cmd" in
   status)
     python3 "$H2_ROOT/core/verify.py" . auto
     python3 "$H2_ROOT/cuisine/cuisine_repl.py" gc list
-    echo "--- Profils modèles disponibles ---"
-    python3 -c "import json; p=json.load(open('$H2_ROOT/profiles/model_profiles.json')); print('\n'.join(f'  • {k}: max_turns={v[\"max_turns\"]}, budget={v[\"token_budget\"]} tok' for k,v in p.items()))"
+    echo "--- Audit Hygiène des 7 Skills Métiers TI (h2 prune) ---"
+    python3 "$H2_ROOT/evolve/modular_evolver.py" prune
     ;;
   *)
     cat <<EOF
-Harnais H2 v3 — Commandes disponibles :
-  h2 peek <fichier.csv|json>                  Aperçu schéma Mode Cuisine L1 (~120 tokens au lieu du fichier complet)
-  h2 query <fichier.csv|json|l2> "<expr_py>"  Requête Python L2 hors contexte avec save('k',v) / load('k') persistants
-  h2 gc [list|clear|drop <cle>]               Agentic Garbage Collection sur les variables L2 (arXiv:2608.23552)
-  h2 run <script.py> [out.json] [cle1,cle2]   Exécute un calcul Python L2 (AST Mode 4) + valide par Juge chmod 444
-  h2 verify [dossier] [auto|code|data|video]  Lance le Stop Hook (AST Mode 4, GUI-HARVEST, Juges chmod 444)
-  h2 evolve [min_occurrences]                 Promeut les erreurs récurrentes (>=2x) de la quarantaine vers SKILL.md
-  h2 quarantine                               Affiche les erreurs isolées (1x) en quarantaine avec leur provenance
-  h2 rollback [cuisine-data|pi-code|video-studio] Restaure la version précédente d'un SKILL.md (Continual Harness)
-  h2 models                                   Détecte tous les modèles disponibles (Locaux, Gratuits, DeepSeek, Claude, Codex)
-  h2 arena                                    Lance l'Arène Multi-Modèles comparative
-  h2 bench100                                 Lance le Banc d'Essai Progressif des 100 Tâches (Niveaux 1 à 10)
-  h2 status                                   Vérifie l'intégrité chmod 444, la mémoire L2 et les profils modèles
+Harnais H2 v4 — Commandes disponibles (Tous Métiers TI : Dev, AF, PO, QA, Data, DevOps, Vidéo) :
+  h2 peek <fichier.csv|json|md>                       Aperçu schéma Mode Cuisine L1 (~120 tokens)
+  h2 query <fichier.csv|json|l2> "<expr_py>"          Requête Python L2 hors contexte avec save/load persistants
+  h2 parallel <peek|query|verify> ...                 Map-Reduce RLM en parallèle sur N fichiers (arXiv:2608.23552)
+  h2 gc [list|clear|drop <cle>]                       Agentic Garbage Collection sur les variables L2
+  h2 run <script.py> [out.json] [cle1,cle2]           Exécute un calcul Python L2 (AST Mode 4) + Juge chmod 444
+  h2 verify [dossier] [auto|code|data|video|af|po|qa|ops] Lance les 7 Juges chmod 444 + signe le Reçu SHA-256
+  h2 receipt [dossier] [fichiers...]                  Vérifie en <5ms que le Reçu SHA-256 correspond aux fichiers
+  h2 route "<consigne>" [fichiers...]                 Pré-routeur de complexité en <2ms (Local 2B / FreeLLM / Frontier)
+  h2 prune                                            Élagage automatique & cadrage conditionnel des 7 SKILL.md
+  h2 evolve [min_occurrences]                         Promeut les erreurs récurrentes (>=2x) vers SKILL.md
+  h2 quarantine                                       Affiche les erreurs isolées (1x) en quarantaine
+  h2 rollback <domaine>                               Restaure la version précédente d'un SKILL.md
+  h2 models                                           Liste les 62 modèles détectés (Local M5, :3011, DeepSeek, Claude, Codex)
+  h2 arena / h2 bench100                              Lance l'Arène Multi-Modèles ou le Banc d'Essai des 100 Tâches
 EOF
     ;;
 esac

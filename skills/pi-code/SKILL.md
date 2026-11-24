@@ -10,5 +10,4 @@ description: Harnais Code Minimaliste (Google arXiv:2611.22299 + Pi 4-Tools) ave
 3. **Porte de sortie obligatoire** : `python3 harnais-h2/core/verify.py . code` doit retourner `OK` avant d'annoncer que la tâche est terminée.
 
 ## Cas limites appris (patcher 1 ligne par erreur réelle)
-- `[Patch #1]` Interdiction d'appeler `finish` sur un `git diff` vide ou avec un marqueur de conflit `<<<<<<<`.
-- `[Patch #2]` Interdiction d'introduire `verify=False`, `CERT_NONE` ou `@unittest.skip` pour contourner un échec.
+- `[Patch #1]` (UNIQUEMENT SI applicable à la consigne) : Interdiction d'appeler `finish` sur un `git diff` vide ou avec un marqueur de conflit `<<<<<<<`.
